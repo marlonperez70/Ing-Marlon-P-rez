@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔐 Marlon Pérez Portfolio | CLI/Hacker Theme
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16.1.3-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+
+**Portafolio profesional con estética de terminal/hacker para especialista en ciberseguridad**
+
+[Demo en Vivo](#) · [LinkedIn](https://linkedin.com/in/ing-marlon-pérez-06ab32303) · [GitHub](https://github.com/marlonperez70)
+
+</div>
+
+---
+
+## 📸 Preview
+
+<div align="center">
+  <img src="preview.png" alt="Portfolio Preview" width="800"/>
+</div>
+
+## ✨ Características
+
+- 🖥️ **Estética CLI/Terminal** - Diseño inspirado en herramientas como NMAP y terminales Linux
+- ⌨️ **Animaciones de Tipeo** - Efecto typewriter en secciones clave
+- 🎯 **Nmap Scan Style** - Perfil profesional presentado como escaneo de puertos
+- 📊 **Progress Bars ASCII** - Habilidades con barras `[████████░░]`
+- 📜 **Git Log Timeline** - Experiencia laboral como commits de Git
+- 🔒 **Seguridad** - Sin exposición de datos sensibles (cédula, dirección)
+- 📱 **Responsive** - Funciona en móvil y desktop
+- ⚡ **WhatsApp Integrado** - Enlace directo con mensaje prellenado
+
+## 🛠️ Stack Tecnológico
+
+| Tecnología | Uso |
+|------------|-----|
+| Next.js 16 | Framework React con App Router |
+| TypeScript | Tipado estático |
+| Tailwind CSS | Estilos utilitarios |
+| Framer Motion | Animaciones fluidas |
+| Lucide React | Iconografía |
+| Fira Code | Fuente monoespaciada |
+
+## 🚀 Instalación
 
 ```bash
+# Clonar repositorio
+git clone https://github.com/marlonperez70/marlon-portfolio.git
+
+# Instalar dependencias
+cd marlon-portfolio
+npm install
+
+# Ejecutar en desarrollo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Estructura del Proyecto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+marlon-portfolio/
+├── app/
+│   ├── globals.css      # Tema CLI personalizado
+│   ├── layout.tsx       # Layout raíz
+│   └── page.tsx         # Página principal
+├── components/
+│   ├── layout/
+│   │   └── Header.tsx   # Navegación estilo terminal
+│   ├── sections/
+│   │   ├── HeroSection.tsx
+│   │   ├── AboutSection.tsx
+│   │   ├── SkillsSection.tsx
+│   │   ├── ExperienceSection.tsx
+│   │   ├── CertificationsSection.tsx
+│   │   └── ContactSection.tsx
+│   └── ui/
+│       ├── TerminalCard.tsx
+│       └── TypewriterEffect.tsx
+└── public/
+```
 
-## Learn More
+## 🎨 Paleta de Colores
 
-To learn more about Next.js, take a look at the following resources:
+| Color | Hex | Uso |
+|-------|-----|-----|
+| 🟢 Terminal Green | `#00ff00` | Texto principal, acentos |
+| 🔵 Cyan | `#00ffff` | Enlaces, destacados |
+| 🟠 Amber | `#ffaa00` | Alertas, etiquetas |
+| ⬛ Black | `#0a0a0a` | Fondo principal |
+| ⬜ Gray | `#c0c0c0` | Texto secundario |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👤 Autor
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Marlon David Pérez Almachi**
 
-## Deploy on Vercel
+- 🔐 Especialista en Ciberseguridad
+- 📋 Auditor de TI
+- 🤖 Entusiasta de IA
+- 📍 Cuenca, Ecuador
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 Licencia
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este proyecto está bajo la Licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
+
+---
+
+<div align="center">
+
+```
+root@security:~$ echo "Happy Hacking! 🔐"
+```
+
+**© 2025 Marlon Pérez | Built with ❤️ and Next.js**
+
+</div>
