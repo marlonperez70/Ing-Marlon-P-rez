@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🔐 Marlon Pérez Portfolio | CLI/Hacker Theme
 
 <div align="center">
@@ -116,3 +117,7 @@ root@security:~$ echo "Happy Hacking! 🔐"
 **© 2025 Marlon Pérez | Built with ❤️ and Next.js**
 
 </div>
+=======
+# Ing-Marlon-P-rez
+Portafolio profesional con estética CLI/Hacker para especialista en ciberseguridad. Construido con Next.js 16, TypeScript y Tailwind CSS. Incluye animaciones de terminal, perfil estilo Nmap scan, timeline git log, progress bars ASCII y enlaces directos a WhatsApp/LinkedIn. Diseño responsive y premium.
+>>>>>>> 40208410a8c35f39985abfc03c8c1c956073d5e0
