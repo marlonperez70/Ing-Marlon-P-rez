@@ -1,26 +1,330 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 
+/* CLI/Hacker Theme Color Variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #0d1117;
+  --bg-terminal: #0c0c0c;
+  --bg-card: rgba(13, 17, 23, 0.8);
+
+  /* Terminal Colors */
+  --terminal-green: #00ff00;
+  --terminal-green-dim: #00cc00;
+  --terminal-cyan: #00ffff;
+  --terminal-cyan-dim: #00d9ff;
+  --terminal-blue: #0066ff;
+  --terminal-amber: #ffaa00;
+  --terminal-red: #ff4444;
+
+  /* Text Colors */
+  --text-primary: #00ff00;
+  --text-secondary: #c0c0c0;
+  --text-muted: #6b7280;
+
+  /* Glow Effects */
+  --glow-green: 0 0 10px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.3);
+  --glow-cyan: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
+  --glow-amber: 0 0 10px rgba(255, 170, 0, 0.5), 0 0 20px rgba(255, 170, 0, 0.3);
+
+  /* Borders */
+  --border-terminal: #00ff0050;
+  --border-cyan: #00ffff30;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --font-mono: 'Fira Code', 'JetBrains Mono', ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-family: 'Fira Code', 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--terminal-green-dim);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terminal-green);
+}
+
+/* Text Selection */
+::selection {
+  background: var(--terminal-green);
+  color: var(--bg-primary);
+}
+
+/* Scanlines Effect */
+.scanlines::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(0deg,
+      rgba(0, 0, 0, 0.15) 0px,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px);
+  opacity: 0.1;
+}
+
+/* CRT Flicker Effect */
+@keyframes flicker {
+  0% {
+    opacity: 0.97;
+  }
+
+  5% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.97;
+  }
+
+  15% {
+    opacity: 0.94;
+  }
+
+  20% {
+    opacity: 0.98;
+  }
+
+  100% {
+    opacity: 0.97;
+  }
+}
+
+.crt-flicker {
+  animation: flicker 0.15s infinite;
+}
+
+/* Cursor Blink */
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
+}
+
+/* Text Glow Effects */
+.text-glow-green {
+  text-shadow: var(--glow-green);
+}
+
+.text-glow-cyan {
+  text-shadow: var(--glow-cyan);
+}
+
+.text-glow-amber {
+  text-shadow: var(--glow-amber);
+}
+
+/* Terminal Border Styles */
+.terminal-border {
+  border: 1px solid var(--border-terminal);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.terminal-border-cyan {
+  border: 1px solid var(--border-cyan);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+.glitch:hover {
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* Matrix Rain Background (subtle) */
+.matrix-bg {
+  background-image:
+    radial-gradient(ellipse at center, transparent 0%, var(--bg-primary) 70%),
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 0, 0.03) 2px,
+      rgba(0, 255, 0, 0.03) 4px);
+}
+
+/* Typography */
+.font-terminal {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--terminal-green);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2rem;
+  text-shadow: var(--glow-green);
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+a {
+  color: var(--terminal-cyan);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--terminal-green);
+  text-shadow: var(--glow-green);
+}
+
+/* Button Styles */
+.btn-terminal {
+  background: transparent;
+  border: 1px solid var(--terminal-green);
+  color: var(--terminal-green);
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-terminal:hover {
+  background: var(--terminal-green);
+  color: var(--bg-primary);
+  box-shadow: var(--glow-green);
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--terminal-green-dim);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--terminal-green);
+  box-shadow: var(--glow-green);
+  transition: width 1s ease-out;
+}
+
+/* ASCII Box Styles */
+.ascii-box {
+  border: 1px solid var(--terminal-green-dim);
+  position: relative;
+  padding: 1rem;
+  background: var(--bg-card);
+}
+
+/* Typing animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(40, end);
+}
+
+/* Section Transitions */
+section {
+  padding: 4rem 0;
+  position: relative;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  section {
+    padding: 2rem 0;
+  }
 }
