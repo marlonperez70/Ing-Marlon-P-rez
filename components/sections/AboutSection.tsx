@@ -91,47 +91,42 @@ export function AboutSection() {
 
                         <div className="text-[#c0c0c0] space-y-3 text-sm leading-relaxed">
                             <p>
-                                Ingeniero en Tecnologías de la Información con sólida trayectoria
+                                Estudiante de Ingeniería en Tecnologías de la Información con sólida trayectoria
                                 en seguridad informática y gestión de información sensible.
-                            </p>
-                            <p>
-                                Ex-agente investigador con <span className="text-[#00ff00]">10 años de experiencia</span> en la Policía
-                                Judicial, especializado en:
-                            </p>
-                            <ul className="space-y-1 ml-4">
-                                <li className="flex items-center gap-2">
-                                    <span className="text-[#00ff00]">•</span>
-                                    Resguardo de información confidencial
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-[#00ff00]">•</span>
-                                    Implementación de controles de seguridad
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-[#00ff00]">•</span>
-                                    Análisis de incidentes y prevención de riesgos
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-[#00ff00]">•</span>
-                                    Auditoría de sistemas IT
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-[#00ff00]">•</span>
-                                    Computación forense
-                                </li>
-                            </ul>
-                            <p>
-                                Actualmente cursando <span className="text-[#00ffff]">8vo nivel de Ingeniería en TI (UNEMI)</span> con
-                                promedio de <span className="text-[#00ff00]">86.08/100</span>, destacando en materias críticas:
-                            </p>
-                            <p className="text-[#ffaa00]">
-                                Seguridad Informática (100%), Auditoría TI (100%),
-                                Inteligencia Artificial (96%) y Computación Móvil (96%).
-                            </p>
-                            <p>
-                                Comprometido con la evaluación de riesgos, cumplimiento normativo
-                                y desarrollo de soluciones tecnológicas seguras y escalables.
-                            </p>
+                                <ul className="space-y-1 ml-4">
+                                    <li className="flex items-center gap-2">
+                                        <span className="text-[#00ff00]">•</span>
+                                        Resguardo de información confidencial
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <span className="text-[#00ff00]">•</span>
+                                        Implementación de controles de seguridad
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <span className="text-[#00ff00]">•</span>
+                                        Análisis de incidentes y prevención de riesgos
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <span className="text-[#00ff00]">•</span>
+                                        Auditoría de sistemas IT
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <span className="text-[#00ff00]">•</span>
+                                        Computación forense
+                                    </li>
+                                </ul>
+                                <p>
+                                    Actualmente cursando <span className="text-[#00ffff]">8vo nivel de Ingeniería en TI (UNEMI)</span> con
+                                    promedio de <span className="text-[#00ff00]">86.08/100</span>, destacando en materias críticas:
+                                </p>
+                                <p className="text-[#ffaa00]">
+                                    Seguridad Informática (100%), Auditoría TI (100%),
+                                    Inteligencia Artificial (96%) y Computación Móvil (96%).
+                                </p>
+                                <p>
+                                    Comprometido con la evaluación de riesgos, cumplimiento normativo
+                                    y desarrollo de soluciones tecnológicas seguras y escalables.
+                                </p>
                         </div>
 
                         <div className="text-[#00ffff] text-xs mt-4">
