@@ -2,7 +2,18 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, User, MessageSquare, Loader2, CheckCircle, FileText } from "lucide-react";
+import { Send, Mail, User, MessageSquare, Loader2, CheckCircle, FileText, Linkedin, Github, Youtube, Twitter, Disc, Share2, Video } from "lucide-react";
+
+const socialLinks = [
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/ing-marlon-pérez-06ab32303?utm_source=share_via&utm_content=profile&utm_medium=member_android", icon: Linkedin, color: "#0066ff" },
+    { label: "GitHub", url: "https://github.com/marlonperez70", icon: Github, color: "#c0c0c0" },
+    { label: "YouTube", url: "https://youtube.com/@marlonperez-ing?si=Dcoba3IRyh-3u7Eg", icon: Youtube, color: "#FF0000" },
+    { label: "X", url: "https://x.com/IngMarlonPere", icon: Twitter, color: "#1DA1F2" },
+    { label: "Reddit", url: "https://www.reddit.com/u/Commercial_Report276/s/AExrG2IXnP", icon: Share2, color: "#FF4500" },
+    { label: "Discord", url: "https://discord.gg/P985BWeB", icon: Disc, color: "#5865F2" },
+    { label: "TikTok", url: "https://www.tiktok.com/@ing.marlon.perez?_r=1&_t=ZS-94YLWjKdAjU", icon: Video, color: "#000000" },
+    { label: "Twitch", url: "https://www.twitch.tv/ingmarlonperez2026", icon: Video, color: "#9146FF" },
+];
 
 export function ContactSection() {
     const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -30,9 +41,9 @@ export function ContactSection() {
     };
 
     const contactInfo = [
-        { icon: Mail, label: "Email", value: "marlon.perez@unemi.edu.ec", color: "var(--neon-cyan)" },
-        { icon: MessageSquare, label: "LinkedIn", value: "linkedin.com/in/marlonperez", color: "var(--neon-violet)" },
-        { icon: FileText, label: "CV", value: "Disponible bajo solicitud", color: "var(--neon-green)" },
+        { icon: Mail, label: "Email Institucional", value: "malmachi@unemi.edu.ec", color: "var(--neon-cyan)" },
+        { icon: MessageSquare, label: "LinkedIn", value: "Ing. Marlon Pérez", color: "var(--neon-violet)" },
+        { icon: FileText, label: "Portafolio v2.0", value: "Investigación & Ciberseguridad", color: "var(--neon-green)" },
     ];
 
     return (
@@ -49,13 +60,34 @@ export function ContactSection() {
                         Contacto
                     </span>
                     <h2 className="section-title">
-                        Hablemos de <span>Colaborar</span>
+                        Conectemos en <span>Redes Sociales</span>
                     </h2>
                     <div className="section-divider" />
                     <p className="text-[var(--text-secondary)] max-w-xl font-sans">
-                        ¿Tienes un proyecto de ciberseguridad, auditoría IT o investigación? Estoy disponible para colaborar.
+                        Sigue mis avances en investigación científica, ciberseguridad y auditoría IT a través de mis canales oficiales.
                     </p>
                 </motion.div>
+
+                {/* Social links grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
+                    {socialLinks.map((social) => (
+                        <a
+                            key={social.label}
+                            href={social.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="glass-card rounded-2xl p-4 flex flex-col items-center gap-3 hover:border-[var(--neon-cyan)] transition-all group"
+                        >
+                            <div
+                                className="w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110"
+                                style={{ background: `${social.color}14`, border: `1px solid ${social.color}28` }}
+                            >
+                                <social.icon className="w-5 h-5" style={{ color: social.color }} />
+                            </div>
+                            <span className="text-xs font-mono text-[var(--text-secondary)]">{social.label}</span>
+                        </a>
+                    ))}
+                </div>
 
                 <div className="grid md:grid-cols-5 gap-8">
                     {/* Contact info */}

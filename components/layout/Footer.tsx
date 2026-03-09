@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Terminal, Github, Linkedin, Mail, ExternalLink, Shield, FlaskConical, ChevronRight } from "lucide-react";
+import { Terminal, Github, Linkedin, Mail, ExternalLink, Shield, FlaskConical, ChevronRight, Youtube, Twitter, Disc, Share2, Video } from "lucide-react";
 
 const footerLinks = {
     "Portafolio": [
@@ -21,9 +21,11 @@ const footerLinks = {
 };
 
 const socialLinks = [
-    { icon: Github, label: "GitHub", href: "https://github.com/marlonperez", external: true },
-    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/marlonperez", external: true },
-    { icon: Mail, label: "Email", href: "mailto:marlon@example.com", external: false },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/ing-marlon-pérez-06ab32303?utm_source=share_via&utm_content=profile&utm_medium=member_android", external: true },
+    { icon: Github, label: "GitHub", href: "https://github.com/marlonperez70", external: true },
+    { icon: Youtube, label: "YouTube", href: "https://youtube.com/@marlonperez-ing?si=Dcoba3IRyh-3u7Eg", external: true },
+    { icon: Twitter, label: "X (Twitter)", href: "https://x.com/IngMarlonPere", external: true },
+    { icon: Mail, label: "Email", href: "mailto:malmachi@unemi.edu.ec", external: false },
 ];
 
 const techs = ["Next.js 15", "TypeScript", "Supabase", "Groq AI", "Vercel"];
