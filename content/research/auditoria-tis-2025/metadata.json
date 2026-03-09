@@ -1,0 +1,23 @@
+{
+    "title": "Auditoría de Sistemas TIS con Marcos de Control Internacionales",
+    "slug": "auditoria-tis-marcos-control",
+    "area": "TIS + IT Audit",
+    "status": "in_progress",
+    "progress": 40,
+    "abstract": "Estudio comparativo de marcos de control para auditoría de Tecnologías de la Información (COBIT, ISO 27001, NIST) aplicados a organizaciones del sector público en Ecuador. Se propone un modelo híbrido adaptado al contexto latinoamericano.",
+    "keywords": [
+        "Auditoría TI",
+        "COBIT",
+        "ISO 27001",
+        "NIST",
+        "Sector Público",
+        "Ecuador"
+    ],
+    "institution": "UNEMI",
+    "year": 2025,
+    "objectives": [
+        "Comparar marcos de control IT en organizaciones públicas ecuatorianas",
+        "Identificar brechas de cumplimiento normativo",
+        "Proponer un modelo híbrido de auditoría adaptado al contexto local"
+    ]
+}

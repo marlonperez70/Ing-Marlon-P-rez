@@ -22,8 +22,9 @@ export function TypewriterEffect({
     onComplete,
 }: TypewriterEffectProps) {
     const [displayedText, setDisplayedText] = useState("");
-    const [isComplete, setIsComplete] = useState(false);
     const [started, setStarted] = useState(false);
+
+    const isComplete = displayedText === text;
 
     useEffect(() => {
         const delayTimer = setTimeout(() => {
@@ -34,18 +35,19 @@ export function TypewriterEffect({
     }, [delay]);
 
     useEffect(() => {
-        if (!started) return;
+        if (!started || isComplete) return;
 
-        if (displayedText.length < text.length) {
-            const timer = setTimeout(() => {
-                setDisplayedText(text.slice(0, displayedText.length + 1));
-            }, speed);
-            return () => clearTimeout(timer);
-        } else {
-            setIsComplete(true);
-            onComplete?.();
-        }
-    }, [displayedText, text, speed, started, onComplete]);
+        const timer = setTimeout(() => {
+            const nextText = text.slice(0, displayedText.length + 1);
+            setDisplayedText(nextText);
+            
+            if (nextText === text) {
+                onComplete?.();
+            }
+        }, speed);
+
+        return () => clearTimeout(timer);
+    }, [displayedText, text, speed, started, onComplete, isComplete]);
 
     return (
         <span className={clsx("inline-block", className)}>

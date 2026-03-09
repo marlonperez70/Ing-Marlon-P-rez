@@ -1,0 +1,22 @@
+{
+    "title": "Implementación de IA para la Detección de Amenazas en Ciberseguridad",
+    "slug": "ia-deteccion-amenazas-ciberseguridad",
+    "area": "Cybersecurity + AI",
+    "status": "in_progress",
+    "progress": 60,
+    "abstract": "Investigación sobre la aplicación de modelos de Machine Learning y Redes Neuronales Convolucionales para la detección automática de intrusiones y amenazas en redes corporativas. Se evalúan algoritmos de clasificación supervisada sobre datasets públicos de ciberseguridad.",
+    "keywords": [
+        "IDS",
+        "Machine Learning",
+        "Redes Neuronales",
+        "Ciberseguridad",
+        "Detección de Intrusiones"
+    ],
+    "institution": "UNEMI",
+    "year": 2025,
+    "objectives": [
+        "Evaluar la eficacia de algoritmos ML en detección de intrusiones",
+        "Comparar modelos CNN vs Random Forest en datasets de tráfico de red",
+        "Implementar un prototipo de IDS basado en IA"
+    ]
+}

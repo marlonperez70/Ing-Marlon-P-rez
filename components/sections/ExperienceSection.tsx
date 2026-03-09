@@ -1,157 +1,155 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TerminalCard } from "@/components/ui/TerminalCard";
-import { GitBranch, CheckCircle } from "lucide-react";
+import { Briefcase, Shield, GraduationCap, Calendar } from "lucide-react";
 
 const experiences = [
     {
-        date: "2025-Present",
-        branch: "main",
-        isHead: true,
-        title: "Estudiante de Ingeniería TI",
-        organization: "Universidad Estatal de Milagro (8vo/10 niveles)",
-        details: [
-            "Promedio: 86.08/100",
-            "Especialización: Seguridad, Auditoría, IA",
+        period: "2014 – 2024",
+        title: "Agente Investigador",
+        company: "Policía Nacional del Ecuador — Policía Judicial",
+        type: "Gobierno",
+        icon: Shield,
+        color: "var(--neon-cyan)",
+        description:
+            "10 años gestionando información clasificada, conduciendo investigaciones de alto perfil y aplicando técnicas de computación forense. Implementación de controles de seguridad y análisis de incidentes críticos.",
+        achievements: [
+            "Resguardo de información clasificada y evidencia digital",
+            "Implementación de controles de seguridad institucionales",
+            "Análisis forense de dispositivos y medios digitales",
+            "Auditoría e inspección de sistemas de información",
+            "Coordinación con organismos de inteligencia nacional",
         ],
-        highlights: [],
+        badge: "10 años",
     },
     {
-        date: "2011-2021",
-        branch: "experience",
-        isHead: false,
-        title: "Agente Investigador - Policía Nacional Ecuador",
-        organization: "Departamento Administrativo - Policía Judicial Sub Zona Guayas",
-        details: [
-            "Resguardo de información confidencial",
-            "Implementación de controles de seguridad",
-            "Gestión de cadena de custodia digital",
-            "Análisis de incidentes críticos",
-            "Prevención de riesgos en entornos de alta exigencia y disciplina",
+        period: "2022 – Presente",
+        title: "Estudiante de Ingeniería en TI",
+        company: "UNEMI — Universidad Estatal de Milagro",
+        type: "Académico",
+        icon: GraduationCap,
+        color: "var(--neon-violet)",
+        description:
+            "8vo nivel de Ingeniería en Tecnologías de la Información con especialización en ciberseguridad, IA y auditoría de sistemas. Promedio académico: 86.08/100.",
+        achievements: [
+            "Seguridad Informática: 100/100",
+            "Auditoría de TI: 100/100",
+            "Inteligencia Artificial: 96/100",
+            "Computación Móvil: 96/100",
+            "Investigación científica en IA y ciberseguridad",
         ],
-        highlights: [
-            "10 años de servicio sin incidentes de seguridad",
-            "Manejo de información clasificada nivel alto",
-            "Implementación de protocolos de custodia digital",
-        ],
+        badge: "86.08/100",
     },
     {
-        date: "1990-2011",
-        branch: "origin",
-        isHead: false,
-        title: "Formación Académica y Profesional",
-        organization: "",
-        details: [
-            "Bachiller en Ciencias Químico Biológicas",
-            "Curso de Inteligencia Digital (Policía Nacional)",
+        period: "2024 – Presente",
+        title: "Desarrollador & Consultor IT",
+        company: "Freelance — Proyectos independientes",
+        type: "Freelance",
+        icon: Briefcase,
+        color: "var(--neon-green)",
+        description:
+            "Desarrollo de soluciones web full-stack, consultoría en ciberseguridad y auditoría de sistemas para clientes del sector privado.",
+        achievements: [
+            "Desarrollo de aplicaciones web con Next.js y Supabase",
+            "Auditorías de seguridad para PyMEs",
+            "Implementación de políticas ISO 27001",
+            "Consultoría en cumplimiento normativo",
         ],
-        highlights: [],
+        badge: "Activo",
     },
 ];
 
 export function ExperienceSection() {
     return (
-        <section id="experience" className="py-20 px-4">
+        <section id="experience" className="py-24 px-4">
             <div className="max-w-5xl mx-auto">
-                <TerminalCard
-                    variant="git"
-                    promptPath="~/experience"
-                    showPrompt={true}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-12"
                 >
-                    {/* Command */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="text-[#ffaa00] mb-6"
-                    >
-                        git log --all --graph --decorate --oneline
-                    </motion.div>
+                    <span className="section-badge">
+                        <Briefcase className="w-3 h-3" />
+                        Trayectoria
+                    </span>
+                    <h2 className="section-title">
+                        Experiencia <span>Profesional</span>
+                    </h2>
+                    <div className="section-divider" />
+                </motion.div>
 
-                    {/* Git Log Timeline */}
-                    <div className="space-y-6">
-                        {experiences.map((exp, index) => (
-                            <motion.div
-                                key={exp.date}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.15 }}
-                                className="relative"
-                            >
-                                {/* Git Commit Line */}
-                                <div className="flex items-start gap-4">
-                                    {/* Git Graph */}
-                                    <div className="flex flex-col items-center">
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[#ffaa00]">*</span>
-                                            <span className="text-[#c0c0c0]">{exp.date}</span>
-                                        </div>
-                                        {exp.isHead && (
-                                            <span className="text-[#00ff00] text-xs mt-1">
-                                                (HEAD -&gt; {exp.branch})
-                                            </span>
-                                        )}
+                <div className="space-y-6">
+                    {experiences.map((exp, index) => (
+                        <motion.div
+                            key={exp.title}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.12, duration: 0.6 }}
+                        >
+                            <div className="glass-card rounded-2xl p-6 md:p-8">
+                                <div className="flex flex-col md:flex-row md:items-start gap-5">
+                                    {/* Icon */}
+                                    <div
+                                        className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                                        style={{ background: `${exp.color}14`, border: `1px solid ${exp.color}30` }}
+                                    >
+                                        <exp.icon className="w-5 h-5" style={{ color: exp.color }} />
                                     </div>
 
-                                    {/* Title */}
                                     <div className="flex-1">
-                                        <h3 className="text-[#00ffff] font-medium">{exp.title}</h3>
-                                        {exp.organization && (
-                                            <p className="text-[#c0c0c0] text-sm">{exp.organization}</p>
-                                        )}
+                                        {/* Header */}
+                                        <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                                            <div>
+                                                <h3 className="text-[var(--text-primary)] font-bold text-lg font-sans mb-0.5">
+                                                    {exp.title}
+                                                </h3>
+                                                <p style={{ color: exp.color }} className="text-sm font-medium font-mono">
+                                                    {exp.company}
+                                                </p>
+                                            </div>
+                                            <div className="flex items-center gap-2 shrink-0">
+                                                <span
+                                                    className="badge text-xs px-2.5 py-1"
+                                                    style={{
+                                                        background: `${exp.color}14`,
+                                                        color: exp.color,
+                                                        border: `1px solid ${exp.color}30`,
+                                                    }}
+                                                >
+                                                    {exp.badge}
+                                                </span>
+                                                <span className="flex items-center gap-1.5 text-[var(--text-muted)] text-xs font-mono">
+                                                    <Calendar className="w-3 h-3" />
+                                                    {exp.period}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        {/* Description */}
+                                        <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-4">
+                                            {exp.description}
+                                        </p>
+
+                                        {/* Achievements */}
+                                        <ul className="space-y-1.5">
+                                            {exp.achievements.map((achievement) => (
+                                                <li
+                                                    key={achievement}
+                                                    className="flex items-start gap-2.5 text-sm text-[var(--text-secondary)]"
+                                                >
+                                                    <span className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full" style={{ background: exp.color }} />
+                                                    {achievement}
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
                                 </div>
-
-                                {/* Branch Line */}
-                                <div className="ml-2 pl-4 border-l border-[#ffaa0050] mt-2">
-                                    {/* Details Box */}
-                                    {exp.details.length > 0 && (
-                                        <div className="border border-[#ffaa0030] bg-[#0a0a0a]/50 p-4 mb-3">
-                                            {exp.details.map((detail, i) => (
-                                                <p key={i} className="text-[#c0c0c0] text-sm flex items-start gap-2">
-                                                    <span className="text-[#ffaa00]">•</span>
-                                                    {detail}
-                                                </p>
-                                            ))}
-                                        </div>
-                                    )}
-
-                                    {/* Highlights */}
-                                    {exp.highlights.length > 0 && (
-                                        <div className="mt-3">
-                                            <p className="text-[#ffaa00] text-sm mb-2 font-medium">
-                                                LOGROS DESTACADOS:
-                                            </p>
-                                            {exp.highlights.map((highlight, i) => (
-                                                <p
-                                                    key={i}
-                                                    className="text-[#00ff00] text-sm flex items-center gap-2"
-                                                >
-                                                    <CheckCircle className="w-4 h-4" />
-                                                    {highlight}
-                                                </p>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Summary */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.5 }}
-                        className="mt-6 pt-4 border-t border-[#ffaa0030] text-sm text-[#c0c0c0]"
-                    >
-                        <GitBranch className="inline w-4 h-4 text-[#ffaa00] mr-2" />
-                        Total commits: 3 | Files changed: 34 años de experiencia acumulada
-                    </motion.div>
-                </TerminalCard>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </section>
     );

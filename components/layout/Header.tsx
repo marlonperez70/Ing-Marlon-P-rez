@@ -2,16 +2,18 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Terminal } from "lucide-react";
+import { Menu, X, Terminal, FlaskConical } from "lucide-react";
 import { clsx } from "clsx";
+import Link from "next/link";
 
 const navItems = [
-    { label: "home", href: "#home", command: "cd ~" },
-    { label: "about", href: "#about", command: "cat about.txt" },
-    { label: "skills", href: "#skills", command: "./skill-scanner.sh" },
-    { label: "experience", href: "#experience", command: "git log" },
-    { label: "certifications", href: "#certifications", command: "ls -lah" },
-    { label: "contact", href: "#contact", command: "mail -s 'Hello'" },
+    { label: "inicio", href: "#home", isAnchor: true },
+    { label: "sobre mí", href: "#about", isAnchor: true },
+    { label: "habilidades", href: "#skills", isAnchor: true },
+    { label: "experiencia", href: "#experience", isAnchor: true },
+    { label: "certificaciones", href: "#certifications", isAnchor: true },
+    { label: "investigación", href: "/investigacion", isAnchor: false, highlight: true },
+    { label: "contacto", href: "#contact", isAnchor: true },
 ];
 
 export function Header() {
@@ -22,97 +24,104 @@ export function Header() {
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
-
-            // Update active section based on scroll position
-            const sections = navItems.map((item) => item.label);
-            for (const section of sections.reverse()) {
-                const element = document.getElementById(section);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.top <= 100) {
-                        setActiveSection(section);
-                        break;
-                    }
+            const sections = ["home", "about", "skills", "experience", "certifications", "contact"];
+            for (const section of [...sections].reverse()) {
+                const el = document.getElementById(section);
+                if (el && el.getBoundingClientRect().top <= 120) {
+                    setActiveSection(section);
+                    break;
                 }
             }
         };
-
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     const handleNavClick = (href: string) => {
         setIsMobileMenuOpen(false);
-        const element = document.querySelector(href);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
     };
 
     return (
         <header
             className={clsx(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
                 isScrolled
-                    ? "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#00ff0030] shadow-[0_0_20px_rgba(0,255,0,0.1)]"
+                    ? "bg-[var(--bg-void)]/90 backdrop-blur-xl border-b border-[var(--border-subtle)] shadow-[0_4px_24px_rgba(0,0,0,0.4)]"
                     : "bg-transparent"
             )}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
-                    {/* Logo / Prompt */}
+                    {/* Logo */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="flex items-center gap-2"
+                        transition={{ duration: 0.5 }}
+                        className="flex items-center gap-2.5"
                     >
-                        <Terminal className="w-5 h-5 text-[#00ff00]" />
-                        <span className="text-[#00ff00] text-sm sm:text-base font-semibold">
-                            root@security:~$
-                        </span>
-                        <span className="text-[#c0c0c0] text-sm hidden sm:inline">
-                            ./marlon-perez --portfolio
-                        </span>
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)] to-[var(--neon-violet)] p-[1px]">
+                            <div className="w-full h-full rounded-[7px] bg-[var(--bg-void)] flex items-center justify-center">
+                                <Terminal className="w-4 h-4 text-[var(--neon-cyan)]" />
+                            </div>
+                        </div>
+                        <div>
+                            <span className="text-[var(--text-primary)] font-semibold text-sm tracking-tight font-sans">
+                                Marlon Pérez
+                            </span>
+                            <p className="text-[var(--neon-cyan)] text-[10px] font-mono leading-none">
+                                Cybersecurity & AI
+                            </p>
+                        </div>
                     </motion.div>
 
-                    {/* Desktop Navigation */}
+                    {/* Desktop Nav */}
                     <nav className="hidden md:flex items-center gap-1">
                         {navItems.map((item, index) => (
-                            <motion.button
+                            <motion.div
                                 key={item.label}
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
-                                onClick={() => handleNavClick(item.href)}
-                                className={clsx(
-                                    "px-3 py-1.5 text-sm transition-all duration-200 rounded group relative",
-                                    activeSection === item.label
-                                        ? "text-[#00ff00] bg-[#00ff0010]"
-                                        : "text-[#c0c0c0] hover:text-[#00ff00]"
-                                )}
+                                transition={{ delay: index * 0.07 }}
                             >
-                                <span className="text-[#00ffff]">[</span>
-                                {item.label}
-                                <span className="text-[#00ffff]">]</span>
-
-                                {/* Tooltip with command */}
-                                <span className="absolute left-1/2 -translate-x-1/2 top-full mt-2 px-2 py-1 bg-[#0d1117] border border-[#00ff0030] text-[#00ff00] text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                                    $ {item.command}
-                                </span>
-                            </motion.button>
+                                {item.isAnchor ? (
+                                    <button
+                                        onClick={() => handleNavClick(item.href)}
+                                        className={clsx(
+                                            "px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-200 capitalize",
+                                            activeSection === item.label.replace(" ", "")
+                                                ? "text-[var(--neon-cyan)] bg-[rgba(0,229,255,0.08)]"
+                                                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white/5"
+                                        )}
+                                    >
+                                        {item.label}
+                                    </button>
+                                ) : (
+                                    <Link
+                                        href={item.href}
+                                        className={clsx(
+                                            "px-3 py-1.5 text-sm font-semibold rounded-lg transition-all duration-200 flex items-center gap-1.5",
+                                            item.highlight
+                                                ? "text-[var(--neon-violet)] border border-[rgba(168,85,247,0.3)] hover:bg-[rgba(168,85,247,0.08)] hover:border-[rgba(168,85,247,0.5)]"
+                                                : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-white/5"
+                                        )}
+                                    >
+                                        {item.highlight && <FlaskConical className="w-3.5 h-3.5" />}
+                                        {item.label}
+                                    </Link>
+                                )}
+                            </motion.div>
                         ))}
                     </nav>
 
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden p-2 text-[#00ff00] hover:bg-[#00ff0010] rounded transition-colors"
+                        className="md:hidden p-2 text-[var(--text-secondary)] hover:text-[var(--neon-cyan)] rounded-lg hover:bg-white/5 transition-colors"
+                        aria-label="Toggle menu"
                     >
-                        {isMobileMenuOpen ? (
-                            <X className="w-6 h-6" />
-                        ) : (
-                            <Menu className="w-6 h-6" />
-                        )}
+                        {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </button>
                 </div>
             </div>
@@ -124,24 +133,30 @@ export function Header() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-[#0d1117] border-b border-[#00ff0030] overflow-hidden"
+                        className="md:hidden bg-[var(--bg-void)]/98 backdrop-blur-xl border-b border-[var(--border-subtle)]"
                     >
-                        <nav className="px-4 py-4 space-y-2">
-                            {navItems.map((item) => (
-                                <button
-                                    key={item.label}
-                                    onClick={() => handleNavClick(item.href)}
-                                    className={clsx(
-                                        "block w-full text-left px-4 py-2 text-sm transition-all duration-200 rounded",
-                                        activeSection === item.label
-                                            ? "text-[#00ff00] bg-[#00ff0010]"
-                                            : "text-[#c0c0c0] hover:text-[#00ff00] hover:bg-[#00ff0010]"
-                                    )}
-                                >
-                                    <span className="text-[#00ff00]">$ </span>
-                                    {item.command}
-                                </button>
-                            ))}
+                        <nav className="px-4 py-4 space-y-1">
+                            {navItems.map((item) =>
+                                item.isAnchor ? (
+                                    <button
+                                        key={item.label}
+                                        onClick={() => handleNavClick(item.href)}
+                                        className="block w-full text-left px-4 py-2.5 text-sm rounded-lg capitalize text-[var(--text-secondary)] hover:text-[var(--neon-cyan)] hover:bg-[rgba(0,229,255,0.06)] transition-all"
+                                    >
+                                        {item.label}
+                                    </button>
+                                ) : (
+                                    <Link
+                                        key={item.label}
+                                        href={item.href}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="flex items-center gap-2 px-4 py-2.5 text-sm rounded-lg text-[var(--neon-violet)] hover:bg-[rgba(168,85,247,0.08)] transition-all font-semibold"
+                                    >
+                                        <FlaskConical className="w-3.5 h-3.5" />
+                                        {item.label}
+                                    </Link>
+                                )
+                            )}
                         </nav>
                     </motion.div>
                 )}

@@ -1,244 +1,128 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TerminalCard } from "@/components/ui/TerminalCard";
-import { Shield, Cloud, Code, Brain, Languages, Search, GraduationCap } from "lucide-react";
-
-const academicInfo = {
-    title: "Ingeniería en Tecnologías de la Información",
-    institution: "Universidad Estatal de Milagro (UNEMI)",
-    status: "8vo nivel | Promedio: 86.08/100",
-    credits: "Créditos ECTS: 232.32 | Total horas: 5,808",
-    subjects: [
-        { name: "Seguridad Informática", score: 100 },
-        { name: "Auditoría de TI", score: 100 },
-        { name: "Deontología", score: 100 },
-        { name: "Inteligencia Artificial", score: 96 },
-        { name: "Computación Móvil", score: 96 },
-        { name: "Interacción Humano-Computador", score: 95 },
-        { name: "Sistemas Operativos", score: 95 },
-    ],
-};
+import { Award, CheckCircle2 } from "lucide-react";
 
 const certifications = [
     {
-        category: "CYBERSECURITY",
-        icon: Shield,
-        items: [
-            {
-                name: "Introduction to Cybersecurity",
-                issuer: "Cisco Networking Academy",
-                year: "2025",
-                description: "Fundamentos de seguridad de redes",
-            },
-            {
-                name: "Curso de Inteligencia Digital",
-                issuer: "Policía Nacional del Ecuador",
-                year: "2013-2014",
-                description: "Inteligencia operativa y análisis de datos",
-            },
-        ],
+        issuer: "Cisco",
+        title: "Networking Essentials",
+        category: "Redes",
+        color: "var(--neon-cyan)",
+        description: "Fundamentos de redes TCP/IP, protocolos y arquitecturas de red.",
+        verified: true,
     },
     {
-        category: "CLOUD COMPUTING",
-        icon: Cloud,
-        items: [
-            {
-                name: "Aprende Cloud Computing desde Cero (60 horas)",
-                issuer: "Universidad Estatal de Milagro",
-                year: "2025",
-                description: "GCP: Seguridad, IAM, Gestión de Recursos",
-            },
-        ],
+        issuer: "Cisco",
+        title: "Cybersecurity Essentials",
+        category: "Ciberseguridad",
+        color: "var(--neon-cyan)",
+        description: "Conceptos de ciberseguridad, amenazas, vulnerabilidades y defensas.",
+        verified: true,
     },
     {
-        category: "SOFTWARE DEVELOPMENT",
-        icon: Code,
-        items: [
-            {
-                name: "Python - Dominio Medio/Avanzado (40 horas)",
-                issuer: "Universidad Estatal de Milagro",
-                year: "2025",
-                description: "POO, Decoradores, APIs, Automatización",
-            },
-        ],
+        issuer: "Google",
+        title: "Fundamentos del Marketing Digital",
+        category: "Digital",
+        color: "var(--neon-amber)",
+        description: "Estrategias digitales, análisis de datos y marketing en línea.",
+        verified: true,
     },
     {
-        category: "ARTIFICIAL INTELLIGENCE",
-        icon: Brain,
-        items: [
-            {
-                name: "Gemini Certified Educator",
-                issuer: "Google for Education",
-                year: "2025",
-                description: "Integración de IA en procesos educativos",
-            },
-        ],
+        issuer: "UNEMI",
+        title: "Seguridad Informática Avanzada",
+        category: "Ciberseguridad",
+        color: "var(--neon-violet)",
+        description: "Seguridad de sistemas, criptografía, IDS/IPS y políticas de seguridad.",
+        verified: true,
     },
     {
-        category: "LANGUAGES",
-        icon: Languages,
-        items: [
-            {
-                name: "General English Proficiency - Level B1.2",
-                issuer: "Centro de Educación Permanente UNEMI",
-                year: "2025",
-                description: "5 módulos completados (500 horas)",
-            },
-        ],
+        issuer: "UNEMI",
+        title: "Auditoría de Sistemas TI",
+        category: "Auditoría",
+        color: "var(--neon-violet)",
+        description: "Marcos de control COBIT, ISO 27001, evaluación de riesgos y cumplimiento.",
+        verified: true,
     },
     {
-        category: "RESEARCH",
-        icon: Search,
-        items: [
-            {
-                name: "Concurso #HilandoCiencia2025",
-                issuer: "Organización de Estados Iberoamericanos (OEI)",
-                year: "2025",
-                description: "Divulgación científica internacional",
-            },
-        ],
+        issuer: "UNEMI",
+        title: "Inteligencia Artificial Aplicada",
+        category: "IA",
+        color: "var(--neon-green)",
+        description: "Machine Learning, redes neuronales, visión computacional y NLP.",
+        verified: true,
     },
 ];
 
 export function CertificationsSection() {
     return (
-        <section id="certifications" className="py-20 px-4">
+        <section id="certifications" className="py-24 px-4">
             <div className="max-w-5xl mx-auto">
-                <TerminalCard
-                    variant="file"
-                    promptPath="~/certifications"
-                    showPrompt={true}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-12"
                 >
-                    {/* Command */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="text-[#0066ff] mb-4"
-                    >
-                        ls -lah /credentials/verified/
-                    </motion.div>
+                    <span className="section-badge">
+                        <Award className="w-3 h-3" />
+                        Certificaciones
+                    </span>
+                    <h2 className="section-title">
+                        Credenciales <span>Verificadas</span>
+                    </h2>
+                    <div className="section-divider" />
+                </motion.div>
 
-                    {/* Directory Info */}
-                    <div className="text-[#c0c0c0] text-sm mb-6">
-                        drwxr-xr-x  marlonperez  staff   2025  certifications/
-                    </div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {certifications.map((cert, index) => (
+                        <motion.div
+                            key={cert.title}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.08 }}
+                        >
+                            <div className="glass-card rounded-2xl p-5 h-full flex flex-col group">
+                                {/* Issuer + badge */}
+                                <div className="flex items-center justify-between mb-3">
+                                    <span
+                                        className="text-xs font-bold font-mono px-2.5 py-1 rounded-lg"
+                                        style={{
+                                            background: `${cert.color}14`,
+                                            color: cert.color,
+                                            border: `1px solid ${cert.color}28`,
+                                        }}
+                                    >
+                                        {cert.issuer}
+                                    </span>
+                                    <span
+                                        className="text-[10px] font-mono px-2 py-0.5 rounded-md"
+                                        style={{ background: `${cert.color}0e`, color: cert.color }}
+                                    >
+                                        {cert.category}
+                                    </span>
+                                </div>
 
-                    {/* Academic Credentials Box */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="border border-[#0066ff30] bg-[#0a0a0a]/50 p-6 mb-6"
-                    >
-                        <div className="text-[#0066ff] text-xs mb-4">
-                            ╔════════════════════════════════════════════════════════════════╗
-                        </div>
-                        <h3 className="text-[#0066ff] font-semibold mb-2 flex items-center gap-2">
-                            <GraduationCap className="w-5 h-5" />
-                            CERTIFICACIONES ACADÉMICAS
-                        </h3>
-                        <div className="text-[#0066ff] text-xs mb-4">
-                            ╠════════════════════════════════════════════════════════════════╣
-                        </div>
+                                {/* Title */}
+                                <h3 className="text-[var(--text-primary)] font-semibold text-sm mb-2 font-sans leading-snug">
+                                    {cert.title}
+                                </h3>
 
-                        <div className="space-y-2 text-sm">
-                            <p className="text-[#00ff00] flex items-center gap-2">
-                                <span>[✓]</span>
-                                <span className="text-[#c0c0c0]">{academicInfo.title}</span>
-                            </p>
-                            <p className="ml-6 text-[#c0c0c0]">{academicInfo.institution}</p>
-                            <p className="ml-6 text-[#ffaa00]">Status: {academicInfo.status}</p>
-                            <p className="ml-6 text-[#c0c0c0]">{academicInfo.credits}</p>
+                                {/* Description */}
+                                <p className="text-[var(--text-muted)] text-xs leading-relaxed flex-1">
+                                    {cert.description}
+                                </p>
 
-                            <div className="ml-6 mt-4">
-                                <p className="text-[#00ffff] mb-2">Materias Destacadas:</p>
-                                {academicInfo.subjects.map((subject) => (
-                                    <p key={subject.name} className="text-[#c0c0c0] flex items-center">
-                                        <span className="text-[#00ff00]">•</span>
-                                        <span className="flex-1 ml-2">{subject.name}</span>
-                                        <span className="text-[#00ff00] ml-2">
-                                            {"·".repeat(20 - subject.name.length / 2)} {subject.score}/100
-                                        </span>
-                                    </p>
-                                ))}
+                                {/* Footer */}
+                                <div className="mt-4 pt-3 border-t border-[var(--border-subtle)] flex items-center gap-1.5">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-[var(--neon-green)]" />
+                                    <span className="text-xs text-[var(--neon-green)] font-mono">Verificado</span>
+                                </div>
                             </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Technical Certifications Box */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="border border-[#0066ff30] bg-[#0a0a0a]/50 p-6"
-                    >
-                        <div className="text-[#0066ff] text-xs mb-4">
-                            ╠════════════════════════════════════════════════════════════════╣
-                        </div>
-                        <h3 className="text-[#0066ff] font-semibold mb-4">
-                            CERTIFICACIONES TÉCNICAS
-                        </h3>
-                        <div className="text-[#0066ff] text-xs mb-4">
-                            ╠════════════════════════════════════════════════════════════════╣
-                        </div>
-
-                        <div className="space-y-6">
-                            {certifications.map((category, catIndex) => (
-                                <motion.div
-                                    key={category.category}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.3 + catIndex * 0.1 }}
-                                >
-                                    <p className="text-[#ffaa00] flex items-center gap-2 mb-2">
-                                        <category.icon className="w-4 h-4" />
-                                        [{category.category}]
-                                    </p>
-                                    {category.items.map((item, itemIndex) => (
-                                        <div
-                                            key={item.name}
-                                            className="ml-4 mb-3 text-sm border-l-2 border-[#0066ff30] pl-3"
-                                        >
-                                            <p className="text-[#c0c0c0]">
-                                                <span className="text-[#00ff00]">
-                                                    {itemIndex === category.items.length - 1 ? "└─" : "├─"}
-                                                </span>
-                                                {" "}{item.name}
-                                            </p>
-                                            <p className="text-[#c0c0c0] ml-3 opacity-70">
-                                                {item.issuer} | {item.year}
-                                            </p>
-                                            <p className="text-[#00ffff] ml-3">
-                                                ⚡ {item.description}
-                                            </p>
-                                        </div>
-                                    ))}
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        <div className="text-[#0066ff] text-xs mt-6">
-                            ╚════════════════════════════════════════════════════════════════╝
-                        </div>
-                    </motion.div>
-
-                    {/* Verify Command */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.6 }}
-                        className="mt-6 text-sm"
-                    >
-                        <p className="text-[#0066ff]">$ ./verify-credentials.sh</p>
-                        <p className="text-[#00ff00]">✓ All certifications verified and up-to-date</p>
-                        <p className="text-[#00ff00]">✓ Documents available in /docs/certificates/</p>
-                    </motion.div>
-                </TerminalCard>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </section>
     );

@@ -44,7 +44,7 @@ export function TerminalCard({
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
             className={clsx(
-                "relative bg-[#0d1117]/80 backdrop-blur-sm border rounded-sm overflow-hidden",
+                "relative bg-[#0d1117]/90 backdrop-blur-none border rounded-sm overflow-hidden",
                 variants[variant],
                 glowVariants[variant],
                 className

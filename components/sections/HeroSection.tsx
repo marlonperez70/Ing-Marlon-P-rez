@@ -2,155 +2,165 @@
 
 import { motion } from "framer-motion";
 import { TypewriterEffect } from "@/components/ui/TypewriterEffect";
-import { MapPin, Shield, Briefcase, ChevronDown } from "lucide-react";
+import { MapPin, Shield, Brain, ChevronDown, Sparkles, ExternalLink } from "lucide-react";
+import Link from "next/link";
+
+const roles = [
+    { icon: Shield, label: "Cybersecurity Specialist", color: "text-[var(--neon-cyan)]" },
+    { icon: Brain, label: "AI Researcher", color: "text-[var(--neon-violet)]" },
+    { icon: Sparkles, label: "IT Auditor & Forensics", color: "text-[var(--neon-green)]" },
+];
 
 export function HeroSection() {
     const scrollToAbout = () => {
-        const element = document.getElementById("about");
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
+        document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
     };
 
     return (
         <section
             id="home"
-            className="min-h-screen flex flex-col justify-center relative pt-16 px-4"
+            className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16 px-4"
         >
-            {/* ASCII Art Logo */}
+            {/* Grid background */}
+            <div className="absolute inset-0 grid-bg opacity-40" />
+
+            {/* Ambient glows */}
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--neon-cyan)] opacity-[0.04] rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[var(--neon-violet)] opacity-[0.05] rounded-full blur-3xl pointer-events-none" />
+
+            <div className="max-w-5xl mx-auto w-full relative z-10">
+                {/* Eyebrow badge */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="mb-6"
+                >
+                    <span className="section-badge">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--neon-green)] animate-pulse" />
+                        Disponible para colaborar
+                    </span>
+                </motion.div>
+
+                {/* Terminal prompt */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="mb-4 font-mono text-sm text-[var(--text-muted)]"
+                >
+                    <span className="text-[var(--neon-green)]">visitor@marlon:~$ </span>
+                    <TypewriterEffect
+                        text="cat perfil-profesional.json"
+                        speed={45}
+                        className="text-[var(--text-secondary)]"
+                    />
+                </motion.div>
+
+                {/* Main heading */}
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 0.7 }}
+                >
+                    <h1 className="mb-4 leading-tight">
+                        <span className="text-[var(--text-primary)]">Marlon David</span>
+                        <br />
+                        <span className="gradient-text">Pérez Almachi</span>
+                    </h1>
+                    <p className="text-[var(--text-secondary)] text-lg mb-8 max-w-2xl leading-relaxed font-sans">
+                        Ingeniero en Tecnologías de la Información · Ex-agente investigador con{" "}
+                        <span className="text-[var(--neon-cyan)] font-semibold">10 años</span> en Policía Judicial.
+                        Especializado en ciberseguridad, auditoría IT e inteligencia artificial.
+                    </p>
+                </motion.div>
+
+                {/* Roles */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2, duration: 0.6 }}
+                    className="flex flex-wrap gap-3 mb-10"
+                >
+                    {roles.map((role) => (
+                        <div
+                            key={role.label}
+                            className="flex items-center gap-2 px-4 py-2 glass-card rounded-full text-sm font-medium"
+                        >
+                            <role.icon className={`w-4 h-4 ${role.color}`} />
+                            <span className="text-[var(--text-secondary)]">{role.label}</span>
+                        </div>
+                    ))}
+                </motion.div>
+
+                {/* Meta info */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6 }}
+                    className="flex flex-wrap gap-4 mb-10 text-sm text-[var(--text-muted)] font-mono"
+                >
+                    <span className="flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5 text-[var(--neon-cyan)]" />
+                        Cuenca, Ecuador
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                        <span className="text-[var(--neon-green)]">●</span>
+                        UNEMI — 8vo Nivel · 86.08/100
+                    </span>
+                </motion.div>
+
+                {/* CTA Buttons */}
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.6 }}
+                    className="flex flex-wrap gap-4 mb-16"
+                >
+                    <button onClick={scrollToAbout} className="btn-primary font-sans">
+                        Ver Perfil Completo
+                    </button>
+                    <Link href="/investigacion" className="btn-secondary font-sans">
+                        Investigaciones
+                        <ExternalLink className="w-3.5 h-3.5" />
+                    </Link>
+                </motion.div>
+
+                {/* Stats row */}
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 2.1, duration: 0.6 }}
+                    className="grid grid-cols-3 gap-4 max-w-md"
+                >
+                    {[
+                        { value: "10+", label: "Años exp." },
+                        { value: "86.08", label: "Promedio UNEMI" },
+                        { value: "100%", label: "Cybersec Score" },
+                    ].map((stat) => (
+                        <div key={stat.label} className="glass-card rounded-xl p-4 text-center">
+                            <p className="text-2xl font-bold gradient-text font-mono">{stat.value}</p>
+                            <p className="text-xs text-[var(--text-muted)] mt-1 font-sans">{stat.label}</p>
+                        </div>
+                    ))}
+                </motion.div>
+            </div>
+
+            {/* Scroll indicator */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="max-w-5xl mx-auto w-full"
+                transition={{ delay: 2.5 }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
             >
-                {/* Terminal Prompt */}
-                <div className="mb-6 text-sm">
-                    <span className="text-[#00ff00]">┌─[</span>
-                    <span className="text-[#00ffff]">visitor@marlon-portfolio</span>
-                    <span className="text-[#00ff00]">]─[</span>
-                    <span className="text-[#ffaa00]">~</span>
-                    <span className="text-[#00ff00]">]</span>
-                </div>
-                <div className="mb-8 text-sm">
-                    <span className="text-[#00ff00]">└──$ </span>
-                    <TypewriterEffect
-                        text="cat /home/marlon/intro.sh && ./intro.sh"
-                        speed={40}
-                        className="text-[#c0c0c0]"
-                    />
-                </div>
-
-                {/* Loading Animation */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 2, duration: 0.5 }}
-                    className="mb-6 text-sm text-[#00ff00]"
+                <motion.button
+                    onClick={scrollToAbout}
+                    animate={{ y: [0, 6, 0] }}
+                    transition={{ duration: 1.8, repeat: Infinity }}
+                    className="text-[var(--text-muted)] hover:text-[var(--neon-cyan)] transition-colors"
                 >
-                    <p>&gt; Initializing profile...</p>
-                    <p>&gt; Loading credentials...</p>
-                    <p>&gt; Access granted.</p>
-                </motion.div>
-
-                {/* Main Content Box */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 2.5, duration: 0.5 }}
-                    className="border border-[#00ff0050] bg-[#0d1117]/80 backdrop-blur-sm p-6 sm:p-8 shadow-[0_0_30px_rgba(0,255,0,0.1)]"
-                >
-                    {/* Top Border */}
-                    <div className="text-[#00ff00] mb-4 text-xs sm:text-sm overflow-hidden">
-                        ╔══════════════════════════════════════════════════════════════════╗
-                    </div>
-
-                    {/* Name */}
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#00ff00] mb-2 text-glow-green">
-                        MARLON DAVID PÉREZ ALMACHI
-                    </h1>
-                    <div className="text-[#00ff00] mb-6 text-xs sm:text-sm">
-                        ════════════════════════════════════════
-                    </div>
-
-                    {/* Roles */}
-                    <div className="space-y-2 mb-6">
-                        <p className="text-[#00ffff] flex items-center gap-2">
-                            <Shield className="w-4 h-4" />
-                            <span>&gt; Cybersecurity Specialist</span>
-                        </p>
-                        <p className="text-[#00ffff] flex items-center gap-2">
-                            <Briefcase className="w-4 h-4" />
-                            <span>&gt; IT Auditor</span>
-                        </p>
-                        <p className="text-[#00ffff] flex items-center gap-2">
-                            <span className="w-4 h-4 flex items-center justify-center">&lt;/&gt;</span>
-                            <span>&gt; Software Engineer</span>
-                        </p>
-                    </div>
-
-                    {/* Status Info */}
-                    <div className="space-y-1 text-sm">
-                        <p>
-                            <span className="text-[#ffaa00]">[STATUS]:</span>
-                            <span className="text-[#00ff00] ml-2">Available for collaboration</span>
-                        </p>
-                        <p className="flex items-center gap-1">
-                            <span className="text-[#ffaa00]">[LOCATION]:</span>
-                            <MapPin className="w-3 h-3 text-[#c0c0c0] ml-2" />
-                            <span className="text-[#c0c0c0]">Cuenca, Ecuador</span>
-                        </p>
-                        <p>
-                            <span className="text-[#ffaa00]">[CLEARANCE]:</span>
-                            <span className="text-[#c0c0c0] ml-2">10 años en Policía Judicial</span>
-                        </p>
-                    </div>
-
-                    {/* Bottom Border */}
-                    <div className="text-[#00ff00] mt-4 text-xs sm:text-sm overflow-hidden">
-                        ╚══════════════════════════════════════════════════════════════════╝
-                    </div>
-                </motion.div>
-
-                {/* Whoami Section */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 3, duration: 0.5 }}
-                    className="mt-8"
-                >
-                    <p className="text-[#00ff00] mb-2">$ whoami</p>
-                    <div className="text-[#c0c0c0] space-y-1 text-sm">
-                        <p>&gt; Security-focused engineer with 10+ years in law enforcement</p>
-                        <p>&gt; Specialized in IT audit, forensic computing, and AI implementation</p>
-                        <p>&gt; Committed to building secure, scalable solutions</p>
-                    </div>
-                </motion.div>
-
-                {/* Scan Complete */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 3.5, duration: 0.5 }}
-                    className="mt-8 flex flex-col items-center"
-                >
-                    <p className="text-[#00ff00] text-sm mb-4">
-                        [SCAN COMPLETE] Click to explore...
-                    </p>
-                    <motion.button
-                        onClick={scrollToAbout}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="p-3 border border-[#00ff00] rounded-full text-[#00ff00] hover:bg-[#00ff0020] transition-colors"
-                    >
-                        <motion.div
-                            animate={{ y: [0, 5, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                        >
-                            <ChevronDown className="w-6 h-6" />
-                        </motion.div>
-                    </motion.button>
-                </motion.div>
+                    <ChevronDown className="w-6 h-6" />
+                </motion.button>
             </motion.div>
         </section>
     );

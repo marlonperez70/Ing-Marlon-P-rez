@@ -1,149 +1,155 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TerminalCard } from "@/components/ui/TerminalCard";
+import { User, Cpu, Globe, Shield, GraduationCap, Star } from "lucide-react";
 
-const nmapScanData = [
-    { port: "22/SSH", state: "OPEN", service: "Identity", version: "Marlon David Pérez Almachi" },
-    { port: "80/HTTP", state: "OPEN", service: "Education", version: "Ing. Tecnologías de la Información" },
-    { port: "443/HTTPS", state: "OPEN", service: "Experience", version: "10 años - Policía Nacional Ecuador" },
-    { port: "3306/DB", state: "OPEN", service: "Specialization", version: "Cybersecurity | IT Audit | AI" },
-    { port: "8080/API", state: "OPEN", service: "Certifications", version: "Cisco | Google | UNEMI" },
-    { port: "9000/AI", state: "OPEN", service: "Languages", version: "Spanish (Native) | English (B1.2)" },
+const profileData = [
+    { icon: User, label: "Identidad", value: "Marlon David Pérez Almachi", color: "text-[var(--neon-cyan)]" },
+    { icon: GraduationCap, label: "Formación", value: "Ing. Tecnologías de la Información · UNEMI", color: "text-[var(--neon-violet)]" },
+    { icon: Shield, label: "Experiencia", value: "10 años · Policía Judicial del Ecuador", color: "text-[var(--neon-green)]" },
+    { icon: Cpu, label: "Especialización", value: "Cybersecurity · IT Audit · Artificial Intelligence", color: "text-[var(--neon-cyan)]" },
+    { icon: Star, label: "Certificaciones", value: "Cisco · Google · UNEMI", color: "text-[var(--neon-amber)]" },
+    { icon: Globe, label: "Idiomas", value: "Español (Nativo) · English (B1.2)", color: "text-[var(--neon-green)]" },
+];
+
+const highlights = [
+    { subject: "Seguridad Informática", score: 100 },
+    { subject: "Auditoría de TI", score: 100 },
+    { subject: "Inteligencia Artificial", score: 96 },
+    { subject: "Computación Móvil", score: 96 },
 ];
 
 export function AboutSection() {
     return (
-        <section id="about" className="py-20 px-4">
+        <section id="about" className="py-24 px-4">
             <div className="max-w-5xl mx-auto">
-                <TerminalCard
-                    variant="nmap"
-                    promptPath="~/about"
-                    showPrompt={true}
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-12"
                 >
-                    {/* Command */}
+                    <span className="section-badge">
+                        <User className="w-3 h-3" />
+                        Sobre Mí
+                    </span>
+                    <h2 className="section-title">
+                        Perfil <span>Profesional</span>
+                    </h2>
+                    <div className="section-divider" />
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                    {/* Left — Profile card */}
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
+                        initial={{ opacity: 0, x: -24 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="text-[#00ffff] mb-4"
+                        transition={{ duration: 0.6 }}
                     >
-                        nmap -sV -A marlon-perez.profile
-                    </motion.div>
+                        <div className="glass-card rounded-2xl p-6 h-full">
+                            {/* Terminal header */}
+                            <div className="flex items-center gap-2 mb-5 pb-4 border-b border-[var(--border-subtle)]">
+                                <div className="flex gap-1.5">
+                                    <div className="terminal-dot w-3 h-3 bg-[#ff5f57]" />
+                                    <div className="terminal-dot w-3 h-3 bg-[#febc2e]" />
+                                    <div className="terminal-dot w-3 h-3 bg-[#28c840]" />
+                                </div>
+                                <span className="font-mono text-xs text-[var(--text-muted)] ml-2">nmap -sV marlon.profile</span>
+                            </div>
 
-                    {/* Nmap Header */}
-                    <div className="text-[#c0c0c0] text-sm mb-4">
-                        <p>Starting Nmap scan on target: <span className="text-[#00ff00]">MARLON_PEREZ</span></p>
-                        <p>Host is up (latency: 0.001ms)</p>
-                    </div>
-
-                    {/* Port Table */}
-                    <div className="overflow-x-auto mb-6">
-                        <table className="w-full text-sm">
-                            <thead>
-                                <tr className="text-left text-[#00ffff]">
-                                    <th className="pr-4 pb-2">PORT</th>
-                                    <th className="pr-4 pb-2">STATE</th>
-                                    <th className="pr-4 pb-2">SERVICE</th>
-                                    <th className="pb-2">VERSION</th>
-                                </tr>
-                            </thead>
-                            <tbody className="text-[#c0c0c0]">
-                                <tr>
-                                    <td colSpan={4} className="text-[#00ff00] py-1">
-                                        ─────────────────────────────────────────────────────────────
-                                    </td>
-                                </tr>
-                                {nmapScanData.map((row, index) => (
-                                    <motion.tr
-                                        key={row.port}
-                                        initial={{ opacity: 0, x: -20 }}
+                            <div className="space-y-4">
+                                {profileData.map((item, i) => (
+                                    <motion.div
+                                        key={item.label}
+                                        initial={{ opacity: 0, x: -16 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
-                                        transition={{ delay: index * 0.1 }}
+                                        transition={{ delay: i * 0.08 }}
+                                        className="flex gap-3"
                                     >
-                                        <td className="pr-4 py-1 text-[#ffaa00]">{row.port}</td>
-                                        <td className="pr-4 py-1 text-[#00ff00]">{row.state}</td>
-                                        <td className="pr-4 py-1 text-[#00ffff]">{row.service}</td>
-                                        <td className="py-1">{row.version}</td>
-                                    </motion.tr>
+                                        <div className={`mt-0.5 shrink-0 ${item.color}`}>
+                                            <item.icon className="w-4 h-4" />
+                                        </div>
+                                        <div>
+                                            <p className="text-[var(--text-muted)] text-xs font-mono uppercase tracking-wider mb-0.5">
+                                                {item.label}
+                                            </p>
+                                            <p className="text-[var(--text-primary)] text-sm font-medium">{item.value}</p>
+                                        </div>
+                                    </motion.div>
                                 ))}
-                            </tbody>
-                        </table>
-                    </div>
-
-                    {/* Profile Box */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="border border-[#00ffff30] bg-[#0a0a0a]/50 p-6"
-                    >
-                        <div className="text-[#00ffff] text-xs mb-4">
-                            ╔═══════════════════════════════════════════════════════════════════╗
-                        </div>
-                        <h3 className="text-[#00ffff] font-semibold mb-4 text-lg">
-                            PERFIL PROFESIONAL
-                        </h3>
-                        <div className="text-[#00ffff] text-xs mb-4">
-                            ╠═══════════════════════════════════════════════════════════════════╣
-                        </div>
-
-                        <div className="text-[#c0c0c0] space-y-3 text-sm leading-relaxed">
-                            <p>
-                                Ingeniero en Tecnologías de la Información con sólida trayectoria
-                                en seguridad informática y gestión de información sensible.
-                            </p>
-                            <p>
-                                Ex-agente investigador con <span className="text-[#00ff00]">10 años de experiencia</span> en la Policía
-                                Judicial, especializado en:
-                            </p>
-                            <ul className="space-y-1 ml-4">
-                                <li className="flex items-center gap-2">
-                                    <span className="text-[#00ff00]">•</span>
-                                    Resguardo de información confidencial
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-[#00ff00]">•</span>
-                                    Implementación de controles de seguridad
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-[#00ff00]">•</span>
-                                    Análisis de incidentes y prevención de riesgos
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-[#00ff00]">•</span>
-                                    Auditoría de sistemas IT
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span className="text-[#00ff00]">•</span>
-                                    Computación forense
-                                </li>
-                            </ul>
-                            <p>
-                                Actualmente cursando <span className="text-[#00ffff]">8vo nivel de Ingeniería en TI (UNEMI)</span> con
-                                promedio de <span className="text-[#00ff00]">86.08/100</span>, destacando en materias críticas:
-                            </p>
-                            <div className="text-[#ffaa00]">
-                                <p>Seguridad Informática (100%), Auditoría TI (100%),</p>
-                                <p>Inteligencia Artificial (96%) y Computación Móvil (96%).</p>
                             </div>
-                            <p>
-                                Comprometido con la evaluación de riesgos, cumplimiento normativo
-                                y desarrollo de soluciones tecnológicas seguras y escalables.
-                            </p>
-                        </div>
 
-                        <div className="text-[#00ffff] text-xs mt-4">
-                            ╚═══════════════════════════════════════════════════════════════════╝
+                            <div className="mt-5 pt-4 border-t border-[var(--border-subtle)]">
+                                <p className="font-mono text-xs text-[var(--neon-green)]">
+                                    ✓ Scan complete · 6 services · 0 vulnerabilities
+                                </p>
+                            </div>
                         </div>
                     </motion.div>
 
-                    {/* Scan Summary */}
-                    <div className="mt-4 text-sm text-[#00ff00]">
-                        Nmap scan complete: 1 host scanned | 6 services detected | 0 vulnerabilities
+                    {/* Right — Bio + Academic highlights */}
+                    <div className="space-y-6">
+                        <motion.div
+                            initial={{ opacity: 0, x: 24 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="glass-card rounded-2xl p-6"
+                        >
+                            <h3 className="text-[var(--text-primary)] font-semibold mb-3 font-sans">Extracto profesional</h3>
+                            <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-3">
+                                Ingeniero en TI con sólida trayectoria en seguridad informática y gestión de información sensible. Ex-agente investigador con{" "}
+                                <span className="text-[var(--neon-cyan)] font-semibold">10 años</span> en Policía Judicial, especializado en resguardo de información confidencial, implementación de controles de seguridad, análisis de incidentes y computación forense.
+                            </p>
+                            <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
+                                Comprometido con la evaluación de riesgos, cumplimiento normativo y desarrollo de soluciones tecnológicas seguras y escalables. Actualmente cursando 8vo nivel con promedio de{" "}
+                                <span className="text-[var(--neon-green)] font-semibold">86.08/100</span>.
+                            </p>
+                        </motion.div>
+
+                        {/* Academic highlights */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 24 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.15 }}
+                            className="glass-card rounded-2xl p-6"
+                        >
+                            <h3 className="text-[var(--text-primary)] font-semibold mb-4 font-sans flex items-center gap-2">
+                                <Star className="w-4 h-4 text-[var(--neon-amber)]" />
+                                Materias destacadas
+                            </h3>
+                            <div className="space-y-3">
+                                {highlights.map((item, i) => (
+                                    <motion.div
+                                        key={item.subject}
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.3 + i * 0.1 }}
+                                    >
+                                        <div className="skill-header">
+                                            <span className="skill-name">{item.subject}</span>
+                                            <span className="skill-level">{item.score}/100</span>
+                                        </div>
+                                        <div className="progress-track">
+                                            <motion.div
+                                                className="progress-fill"
+                                                initial={{ width: 0 }}
+                                                whileInView={{ width: `${item.score}%` }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 1.2, delay: 0.4 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                                            />
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
                     </div>
-                </TerminalCard>
+                </div>
             </div>
         </section>
     );
