@@ -69,9 +69,9 @@ export function HeroSection() {
                         <span className="gradient-text">Pérez Almachi</span>
                     </h1>
                     <p className="text-[var(--text-secondary)] text-lg mb-8 max-w-2xl leading-relaxed font-sans">
-                        Ingeniero en Tecnologías de la Información · Ex-agente investigador con{" "}
-                        <span className="text-[var(--neon-cyan)] font-semibold">10 años</span> en Policía Judicial.
-                        Especializado en ciberseguridad, auditoría IT e inteligencia artificial.
+                        Estudiante avanzado de Ingeniería en TI · Especialista en Seguridad con{" "}
+                        <span className="text-[var(--neon-cyan)] font-semibold">10 años</span> de trayectoria en gestión de información crítica y ciberseguridad.
+                        Enfocado en la convergencia de la IA y el análisis forense digital.
                     </p>
                 </motion.div>
 
@@ -106,7 +106,7 @@ export function HeroSection() {
                     </span>
                     <span className="flex items-center gap-1.5">
                         <span className="text-[var(--neon-green)]">●</span>
-                        UNEMI — 8vo Nivel · 86.08/100
+                        UNEMI — 9no Nivel · 86.08/100
                     </span>
                 </motion.div>
 

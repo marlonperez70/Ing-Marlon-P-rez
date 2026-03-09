@@ -61,7 +61,7 @@ export function Footer() {
                                 </div>
                             </div>
                             <p className="text-[var(--text-muted)] text-sm leading-relaxed">
-                                Ingeniero en TI especializado en ciberseguridad, auditoría y sistemas de IA. Ex-agente investigador con 10 años en Policía Judicial.
+                                Estudiante avanzado de Ingeniería en TI especializado en ciberseguridad y auditoría. Con 10 años de trayectoria en gestión de información crítica y seguridad.
                             </p>
                         </motion.div>
 

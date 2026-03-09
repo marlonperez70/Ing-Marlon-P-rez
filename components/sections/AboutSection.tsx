@@ -5,17 +5,17 @@ import { User, Cpu, Globe, Shield, GraduationCap, Star } from "lucide-react";
 
 const profileData = [
     { icon: User, label: "Identidad", value: "Marlon David Pérez Almachi", color: "text-[var(--neon-cyan)]" },
-    { icon: GraduationCap, label: "Formación", value: "Ing. Tecnologías de la Información · UNEMI", color: "text-[var(--neon-violet)]" },
-    { icon: Shield, label: "Experiencia", value: "10 años · Policía Judicial del Ecuador", color: "text-[var(--neon-green)]" },
+    { icon: GraduationCap, label: "Formación", value: "Estudiante de Ingeniería en TI (9no Nivel) · UNEMI", color: "text-[var(--neon-violet)]" },
+    { icon: Shield, label: "Experiencia", value: "10 años en Seguridad Crítica y Análisis de Datos", color: "text-[var(--neon-green)]" },
     { icon: Cpu, label: "Especialización", value: "Cybersecurity · IT Audit · Artificial Intelligence", color: "text-[var(--neon-cyan)]" },
     { icon: Star, label: "Certificaciones", value: "Cisco · Google · UNEMI", color: "text-[var(--neon-amber)]" },
     { icon: Globe, label: "Idiomas", value: "Español (Nativo) · English (B1.2)", color: "text-[var(--neon-green)]" },
 ];
 
 const highlights = [
-    { subject: "Seguridad Informática", score: 100 },
-    { subject: "Auditoría de TI", score: 100 },
-    { subject: "Inteligencia Artificial", score: 96 },
+    { subject: "Seguridad de la Información", score: 100 },
+    { subject: "Auditoría de Sistemas IT", score: 100 },
+    { subject: "Inteligencia Artificial Aplicada", score: 96 },
     { subject: "Computación Móvil", score: 96 },
 ];
 
@@ -99,14 +99,13 @@ export function AboutSection() {
                             transition={{ duration: 0.6 }}
                             className="glass-card rounded-2xl p-6"
                         >
-                            <h3 className="text-[var(--text-primary)] font-semibold mb-3 font-sans">Extracto profesional</h3>
+                            <h3 className="text-[var(--text-primary)] font-semibold mb-3 font-sans">Trayectoria y Enfoque</h3>
                             <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-3">
-                                Ingeniero en TI con sólida trayectoria en seguridad informática y gestión de información sensible. Ex-agente investigador con{" "}
-                                <span className="text-[var(--neon-cyan)] font-semibold">10 años</span> en Policía Judicial, especializado en resguardo de información confidencial, implementación de controles de seguridad, análisis de incidentes y computación forense.
+                                Estudiante avanzado de Ingeniería en TI con una sólida trayectoria de{" "}
+                                <span className="text-[var(--neon-cyan)] font-semibold">10 años</span> en la gestión de seguridad crítica y análisis de información sensible dentro del sector público. Especializado en el resguardo de infraestructuras de datos, implementación de controles de seguridad y análisis forense digital.
                             </p>
                             <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
-                                Comprometido con la evaluación de riesgos, cumplimiento normativo y desarrollo de soluciones tecnológicas seguras y escalables. Actualmente cursando 8vo nivel con promedio de{" "}
-                                <span className="text-[var(--neon-green)] font-semibold">86.08/100</span>.
+                                Mi formación se centra en la convergencia de la Inteligencia Artificial y la Ciberseguridad. Actualmente curso el <span className="text-[var(--neon-green)] font-semibold">9no nivel</span> en la Universidad Estatal de Milagro (UNEMI), manteniendo un promedio de excelencia de <span className="text-[var(--neon-green)] font-semibold">86.08/100</span>.
                             </p>
                         </motion.div>
 

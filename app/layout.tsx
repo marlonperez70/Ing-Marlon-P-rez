@@ -19,15 +19,15 @@ const firaCode = Fira_Code({
 export const metadata: Metadata = {
   title: "Ing. Marlon Pérez | Cybersecurity & IT Audit Specialist",
   description:
-    "Ingeniero en TI especializado en Ciberseguridad, Auditoría IT e Inteligencia Artificial. 10 años de experiencia en Policía Judicial del Ecuador. Investigador científico en IA y sistemas de detección.",
+    "Estudiante avanzado de Ingeniería en TI especializado en Ciberseguridad, Auditoría IT e Inteligencia Artificial. 10 años de trayectoria en gestión de información crítica y seguridad institucional.",
   keywords: [
     "Ciberseguridad", "IT Audit", "Seguridad Informática", "Ecuador", "IA", "Machine Learning",
-    "COBIT", "ISO 27001", "Auditoría TI", "Computación Forense", "UNEMI",
+    "COBIT", "ISO 27001", "Auditoría TI", "Análisis Forense", "UNEMI",
   ],
   authors: [{ name: "Ing. Marlon David Pérez Almachi" }],
   openGraph: {
     title: "Ing. Marlon Pérez | Cybersecurity & AI Researcher",
-    description: "Security-focused engineer · IT Auditor · AI Researcher · 10+ years in law enforcement",
+    description: "Especialista en Seguridad · Auditor de Sistemas IT · Investigador IA · 10+ años de trayectoria",
     type: "website",
     locale: "es_EC",
   },
