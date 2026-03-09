@@ -34,16 +34,17 @@ const projectsData = {
         color: "#A855F7",
         year: 2025,
         institution: "UNEMI",
+        videoUrl: "https://www.youtube.com/embed/-MjXtWBno-4",
         description:
-            "Estudio comparativo de marcos de control para auditoría de Tecnologías de la Información (COBIT 5, ISO 27001, NIST CSF) aplicados a organizaciones del sector público en Ecuador. Se propone un modelo híbrido de auditoría adaptado al contexto normativo y operacional latinoamericano.",
+            "El gobierno de TI no es una función meramente técnica, sino un pilar del gobierno corporativo que consta de liderazgo, estructuras organizacionales y procesos para garantizar que la tecnología sostenga y extienda las estrategias y objetivos organizacionales. Esta investigación se centra en la implementación de marcos de control autorizados (COBIT 5, ISO 27001, NIST CSF) para permitir que la tecnología se gobierne de manera holística en toda la empresa.",
         objectives: [
-            "Comparar los marcos de control COBIT, ISO 27001 y NIST en organizaciones públicas",
-            "Identificar brechas de cumplimiento normativo en instituciones ecuatorianas",
-            "Proponer un modelo híbrido de auditoría IT adaptado al contexto latinoamericano",
-            "Validar el modelo propuesto en un caso de estudio institucional",
+            "Entrega de Valor (Value Delivery): Asegurar que las inversiones en TI generen el mayor retorno posible para el negocio",
+            "Administración de Riesgos (Risk Management): Definir niveles de riesgo aceptables y proteger los activos críticos de información",
+            "Sistemas de Control: Implementar marcos de trabajo (COBIT) para armonizar mejores prácticas internacionales",
+            "Separación de Gobierno y Gestión: Diferenciar propósitos y actividades bajo el paraguas de COBIT 5",
         ],
-        methodology: "Investigación mixta (cualitativa + cuantitativa). Se aplican entrevistas estructuradas a responsables IT de instituciones públicas y análisis documental de políticas de seguridad. Los resultados se comparan con los requisitos de cada marco de control.",
-        keywords: ["Auditoría TI", "COBIT 5", "ISO 27001", "NIST CSF", "Sector Público", "Ecuador", "Cumplimiento", "Riesgo IT"],
+        methodology: "Investigación mixta aplicada al sector público ecuatoriano. Se analiza la integración de áreas de negocio con responsabilidades funcionales de TI mediante estructuras como el Comité Estratégico de TI (nivel consejo) y el Comité Directivo de TI (nivel ejecutivo).",
+        keywords: ["Gobierno de TI", "COBIT 5", "ISO 27001", "Gestión de Riesgos", "Entrega de Valor", "Cumplimiento Normativo", "COSO", "Auditoría IT"],
     },
 };
 
@@ -89,6 +90,29 @@ export default async function ResearchDetailPage({ params }: { params: Promise<P
                         <ArrowLeft className="w-4 h-4" />
                         Volver a proyectos
                     </Link>
+
+                    {/* Video Section (if exists) */}
+                    {project.videoUrl && (
+                        <div className="mb-8 glass-card rounded-2xl overflow-hidden border-[var(--border-subtle)]">
+                            <div className="aspect-video w-full">
+                                <iframe
+                                    src={project.videoUrl}
+                                    title={project.title}
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    className="w-full h-full border-0"
+                                />
+                            </div>
+                            <div className="p-4 bg-[rgba(168,85,247,0.05)] border-t border-[var(--border-subtle)] flex items-center gap-3">
+                                <div className="w-8 h-8 rounded-full bg-[var(--neon-violet)]/10 flex items-center justify-center">
+                                    <FlaskConical className="w-4 h-4 text-[var(--neon-violet)]" />
+                                </div>
+                                <p className="text-xs font-mono text-[var(--neon-violet)]">
+                                    MASTERCLASS DESTACADA: {project.title}
+                                </p>
+                            </div>
+                        </div>
+                    )}
 
                     {/* Main card */}
                     <div className="glass-card rounded-2xl p-6 md:p-10 mb-6">
