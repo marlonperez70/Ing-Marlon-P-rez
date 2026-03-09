@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ChatWidget } from "@/components/chat/ChatWidget";
-import { ArrowLeft, BarChart3, Calendar, Building2, Target, Tag } from "lucide-react";
+import { ArrowLeft, BarChart3, Calendar, Building2, Target, Tag, FlaskConical, Video } from "lucide-react";
 import Link from "next/link";
+import { clsx } from "clsx";
 
 const projectsData = {
     "ia-deteccion-amenazas-ciberseguridad": {
@@ -15,27 +16,8 @@ const projectsData = {
         color: "#00E5FF",
         year: 2025,
         institution: "UNEMI",
-        description:
-            "Investigación sobre la aplicación de modelos de Machine Learning y Redes Neuronales Convolucionales para la detección automática de intrusiones y amenazas en redes corporativas. Se evalúan algoritmos de clasificación supervisada sobre datasets públicos de ciberseguridad (CICIDS2017, KDD Cup 99).",
-        objectives: [
-            "Evaluar la eficacia de algoritmos ML en detección de intrusiones de red",
-            "Comparar modelos CNN vs Random Forest vs SVM en datasets de tráfico de red",
-            "Implementar un prototipo funcional de IDS basado en IA",
-            "Validar el modelo con tráfico de red real en entorno controlado",
-        ],
-        methodology: "Se utiliza el enfoque de investigación experimental cuantitativa. Los datasets CICIDS2017 y KDD Cup 99 son preprocesados con técnicas de normalización y balanceo (SMOTE). Se entrenan modelos de clasificación supervisada y se evalúan con métricas de precision, recall, F1-score y AUC-ROC.",
-        keywords: ["IDS", "Machine Learning", "Redes Neuronales", "CNN", "Ciberseguridad", "Detección de Intrusiones", "Random Forest", "CICIDS2017"],
-    },
-    "ia-deteccion-amenazas-ciberseguridad": {
-        title: "IA para la Detección de Amenazas en Ciberseguridad",
-        area: "Cybersecurity + AI",
-        status: "in_progress" as const,
-        progress: 60,
-        color: "#00E5FF",
-        year: 2025,
-        institution: "UNEMI",
-        videoUrl: "https://www.tiktok.com/player/v1/7403314565311483142", // Sakana AI Ethics Analysis
-        videoType: "tiktok",
+        videoUrl: "https://www.tiktok.com/player/v1/7403314565311483142", 
+        videoType: "tiktok" as const,
         description:
             "Investigación sobre la aplicación de modelos de Machine Learning y Redes Neuronales para la detección automática de intrusiones. El proyecto integra un enfoque crítico sobre la seguridad de la IA, analizando incidentes de comportamiento emergente como el caso de Sakana AI (The Scientist), donde la IA intentó evadir restricciones de código.",
         objectives: [
@@ -56,16 +38,16 @@ const projectsData = {
         year: 2025,
         institution: "UNEMI",
         videoUrl: "https://www.youtube.com/embed/-MjXtWBno-4",
-        videoType: "youtube",
+        videoType: "youtube" as const,
         description:
-            "El gobierno de TI no es una función meramente técnica, sino un pilar del gobierno corporativo que consta de liderazgo, estructuras organizacionales y procesos para garantizar que la tecnología sostenga y extienda las estrategias y objetivos organizacionales. Esta investigación se centra en la implementación de marcos de control autorizados (COBIT 5, ISO 27001, NIST CSF) para permitir que la tecnología se gobierne de manera holística en toda la empresa.",
+            "El gobierno de TI no es una función meramente técnica, sino un pilar del gobierno corporativo que consta de liderazgo, estructuras organizacionales y procesos para garantizar que la tecnología sostenga y extienda las estrategias y objetivos organizacionales. Esta investigación se centra en la implementación de marcos de control autorizados (COBIT 5, ISO 27001, NIST CSF) para permitir que la tecnología se gobierne de manera holística.",
         objectives: [
             "Entrega de Valor (Value Delivery): Asegurar que las inversiones en TI generen el mayor retorno posible para el negocio",
             "Administración de Riesgos (Risk Management): Definir niveles de riesgo aceptables y proteger los activos críticos de información",
             "Sistemas de Control: Implementar marcos de trabajo (COBIT) para armonizar mejores prácticas internacionales",
             "Separación de Gobierno y Gestión: Diferenciar propósitos y actividades bajo el paraguas de COBIT 5",
         ],
-        methodology: "Investigación mixta aplicada al sector público ecuatoriano. Se analiza la integración de áreas de negocio con responsabilidades funcionales de TI mediante estructuras como el Comité Estratégico de TI (nivel consejo) y el Comité Directivo de TI (nivel ejecutivo).",
+        methodology: "Investigación mixta aplicada al sector público ecuatoriano. Se analiza la integración de áreas de negocio con responsabilidades funcionales de TI mediante estructuras como el Comité Estratégico de TI.",
         keywords: ["Gobierno de TI", "COBIT 5", "ISO 27001", "Gestión de Riesgos", "Entrega de Valor", "Cumplimiento Normativo", "COSO", "Auditoría IT"],
     },
 };
@@ -113,7 +95,7 @@ export default async function ResearchDetailPage({ params }: { params: Promise<P
                         Volver a proyectos
                     </Link>
 
-                    {/* Video Section (Horizontal for YouTube, Vertical for TikTok) */}
+                    {/* Video Section */}
                     {project.videoUrl && (
                         <div className={clsx(
                             "mb-10 glass-card rounded-2xl overflow-hidden border-[var(--border-subtle)] mx-auto",
@@ -136,7 +118,7 @@ export default async function ResearchDetailPage({ params }: { params: Promise<P
                                     {project.videoType === "tiktok" ? <Video className="w-4 h-4 text-[var(--neon-cyan)]" /> : <FlaskConical className="w-4 h-4 text-[var(--neon-violet)]" />}
                                 </div>
                                 <p className="text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-widest">
-                                    Análisis Multimedia: {project.videoType === "tiktok" ? "TikTok Insights" : "YouTube Masterclass"}
+                                    Multimedia: {project.videoType === "tiktok" ? "TikTok Analysis" : "YouTube Masterclass"}
                                 </p>
                             </div>
                         </div>
@@ -230,7 +212,6 @@ export default async function ResearchDetailPage({ params }: { params: Promise<P
                     <div className="glass-card rounded-2xl p-6">
                         <h2 className="text-[var(--text-primary)] font-semibold mb-2 font-sans">Documentos del Proyecto</h2>
                         <p className="text-[var(--text-muted)] text-sm font-mono">
-                            {/* Los documentos PDF serán cargados próximamente en Supabase Storage */}
                             Documentos próximamente disponibles en Supabase Storage.
                         </p>
                     </div>
