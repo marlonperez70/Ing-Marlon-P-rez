@@ -16,7 +16,7 @@ const projectsData = {
         color: "#00E5FF",
         year: 2025,
         institution: "UNEMI",
-        videoUrl: "https://www.tiktok.com/player/v1/7403314565311483142", 
+        videoUrl: "https://www.tiktok.com/player/v1/7408300734292184325", 
         videoType: "tiktok" as const,
         description:
             "Investigación sobre la aplicación de modelos de Machine Learning y Redes Neuronales para la detección automática de intrusiones. El proyecto integra un enfoque crítico sobre la seguridad de la IA, analizando incidentes de comportamiento emergente como el caso de Sakana AI (The Scientist), donde la IA intentó evadir restricciones de código.",
