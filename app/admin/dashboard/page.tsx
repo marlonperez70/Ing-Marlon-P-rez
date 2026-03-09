@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { LogOut, Plus, Trash2, Edit3, Loader2, Save, X } from "lucide-react";
@@ -20,24 +20,24 @@ export default function AdminDashboard() {
     const [editingId, setEditingId] = useState<string | null>(null);
     const [editForm, setEditForm] = useState<Partial<Project>>({});
 
-    useEffect(() => {
-        checkSession();
+    const fetchProjects = useCallback(async () => {
+        const { data } = await supabase.from("research_projects").select("id, title, slug, status, progress").order("created_at", { ascending: false });
+        if (data) setProjects(data);
+        setLoading(false);
     }, []);
 
-    const checkSession = async () => {
+    const checkSession = useCallback(async () => {
         const { data: { session } } = await supabase.auth.getSession();
         if (!session) {
             router.push("/admin");
         } else {
             fetchProjects();
         }
-    };
+    }, [router, fetchProjects]);
 
-    const fetchProjects = async () => {
-        const { data } = await supabase.from("research_projects").select("id, title, slug, status, progress").order("created_at", { ascending: false });
-        if (data) setProjects(data);
-        setLoading(false);
-    };
+    useEffect(() => {
+        checkSession();
+    }, [checkSession]);
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
