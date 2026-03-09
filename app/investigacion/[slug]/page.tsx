@@ -26,6 +26,27 @@ const projectsData = {
         methodology: "Se utiliza el enfoque de investigación experimental cuantitativa. Los datasets CICIDS2017 y KDD Cup 99 son preprocesados con técnicas de normalización y balanceo (SMOTE). Se entrenan modelos de clasificación supervisada y se evalúan con métricas de precision, recall, F1-score y AUC-ROC.",
         keywords: ["IDS", "Machine Learning", "Redes Neuronales", "CNN", "Ciberseguridad", "Detección de Intrusiones", "Random Forest", "CICIDS2017"],
     },
+    "ia-deteccion-amenazas-ciberseguridad": {
+        title: "IA para la Detección de Amenazas en Ciberseguridad",
+        area: "Cybersecurity + AI",
+        status: "in_progress" as const,
+        progress: 60,
+        color: "#00E5FF",
+        year: 2025,
+        institution: "UNEMI",
+        videoUrl: "https://www.tiktok.com/player/v1/7403314565311483142", // Sakana AI Ethics Analysis
+        videoType: "tiktok",
+        description:
+            "Investigación sobre la aplicación de modelos de Machine Learning y Redes Neuronales para la detección automática de intrusiones. El proyecto integra un enfoque crítico sobre la seguridad de la IA, analizando incidentes de comportamiento emergente como el caso de Sakana AI (The Scientist), donde la IA intentó evadir restricciones de código.",
+        objectives: [
+            "Evaluar algoritmos ML en detección de intrusiones de red (CICIDS2017)",
+            "Análisis Ético: Estudiar riesgos de evasión de restricciones en agentes autónomos de IA",
+            "Implementar prototipo de IDS resiliente a ataques de envenenamiento de datos",
+            "Validar modelos CNN vs Random Forest en detección de malware",
+        ],
+        methodology: "Enfoque experimental cuantitativo para modelos IDS y análisis cualitativo forense para casos de estudio éticos. Se utilizan técnicas de normalización y balanceo (SMOTE) en datasets de tráfico de red.",
+        keywords: ["IA Ética", "Sakana AI", "Cybersecurity", "IDS", "Machine Learning", "Detección de Amenazas"],
+    },
     "auditoria-tis-marcos-control": {
         title: "Auditoría de Sistemas TIS con Marcos de Control Internacionales",
         area: "TIS + IT Audit",
@@ -35,6 +56,7 @@ const projectsData = {
         year: 2025,
         institution: "UNEMI",
         videoUrl: "https://www.youtube.com/embed/-MjXtWBno-4",
+        videoType: "youtube",
         description:
             "El gobierno de TI no es una función meramente técnica, sino un pilar del gobierno corporativo que consta de liderazgo, estructuras organizacionales y procesos para garantizar que la tecnología sostenga y extienda las estrategias y objetivos organizacionales. Esta investigación se centra en la implementación de marcos de control autorizados (COBIT 5, ISO 27001, NIST CSF) para permitir que la tecnología se gobierne de manera holística en toda la empresa.",
         objectives: [
@@ -91,24 +113,30 @@ export default async function ResearchDetailPage({ params }: { params: Promise<P
                         Volver a proyectos
                     </Link>
 
-                    {/* Video Section (if exists) */}
+                    {/* Video Section (Horizontal for YouTube, Vertical for TikTok) */}
                     {project.videoUrl && (
-                        <div className="mb-8 glass-card rounded-2xl overflow-hidden border-[var(--border-subtle)]">
-                            <div className="aspect-video w-full">
+                        <div className={clsx(
+                            "mb-10 glass-card rounded-2xl overflow-hidden border-[var(--border-subtle)] mx-auto",
+                            project.videoType === "tiktok" ? "max-w-[340px]" : "w-full"
+                        )}>
+                            <div className={clsx(
+                                "relative w-full",
+                                project.videoType === "tiktok" ? "aspect-[9/16]" : "aspect-video"
+                            )}>
                                 <iframe
                                     src={project.videoUrl}
                                     title={project.title}
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen
-                                    className="w-full h-full border-0"
+                                    className="absolute inset-0 w-full h-full border-0"
                                 />
                             </div>
-                            <div className="p-4 bg-[rgba(168,85,247,0.05)] border-t border-[var(--border-subtle)] flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-full bg-[var(--neon-violet)]/10 flex items-center justify-center">
-                                    <FlaskConical className="w-4 h-4 text-[var(--neon-violet)]" />
+                            <div className="p-4 bg-[rgba(255,255,255,0.03)] border-t border-[var(--border-subtle)] flex items-center gap-3">
+                                <div className="w-8 h-8 rounded-full bg-[var(--neon-cyan)]/10 flex items-center justify-center">
+                                    {project.videoType === "tiktok" ? <Video className="w-4 h-4 text-[var(--neon-cyan)]" /> : <FlaskConical className="w-4 h-4 text-[var(--neon-violet)]" />}
                                 </div>
-                                <p className="text-xs font-mono text-[var(--neon-violet)]">
-                                    MASTERCLASS DESTACADA: {project.title}
+                                <p className="text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-widest">
+                                    Análisis Multimedia: {project.videoType === "tiktok" ? "TikTok Insights" : "YouTube Masterclass"}
                                 </p>
                             </div>
                         </div>
