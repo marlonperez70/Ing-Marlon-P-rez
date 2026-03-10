@@ -3,11 +3,17 @@
 import { motion } from "framer-motion";
 import { User, Cpu, Globe, Shield, GraduationCap, Star } from "lucide-react";
 
+const OrcidIcon = ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.541 0 .942.452.942.996 0 .52-.39.985-.942.985-.541 0-.941-.465-.941-.985 0-.544.39-.996.941-.996zM5.03 5.646h4.68v12.708H5.03V5.646zm11.646 12.708h-2.016V5.646h2.016v1.844c.281-.609.938-1.219 2.016-1.219 1.328 0 2.344.859 2.344 2.75v9.333z" />
+    </svg>
+);
+
 const profileData = [
     { icon: User, label: "Identidad", value: "Marlon David Pérez Almachi", color: "text-[var(--neon-cyan)]" },
     { icon: GraduationCap, label: "Formación", value: "Estudiante de Ingeniería en TI (9no Nivel) · UNEMI", color: "text-[var(--neon-violet)]" },
     { icon: Shield, label: "Experiencia", value: "10 años en Seguridad Crítica y Análisis de Datos", color: "text-[var(--neon-green)]" },
-    { icon: Cpu, label: "ORCID iD", value: "0009-0001-9166-7497", color: "text-[#A6CE39]" },
+    { icon: OrcidIcon, label: "ORCID iD", value: "0009-0001-9166-7497", color: "text-[#A6CE39]" },
     { icon: Star, label: "Certificaciones", value: "Cisco · Google · UNEMI", color: "text-[var(--neon-amber)]" },
     { icon: Globe, label: "Idiomas", value: "Español (Nativo) · English (B1.2)", color: "text-[var(--neon-green)]" },
 ];

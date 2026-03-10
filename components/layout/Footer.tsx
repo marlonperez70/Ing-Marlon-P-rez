@@ -20,10 +20,23 @@ const footerLinks = {
     ],
 };
 
+// Custom SVG components for official brand logos
+const TikTokIcon = ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.525.02c1.31-.32 2.51.69 2.51 2.02 0 .03-.01.06-.01.09.33 0 .66.01.99.01 0 2.3 1.8 4.16 4.03 4.24v3.31c-1.3-.01-2.5-.4-3.5-1.1-.01 3.1-.01 6.2-.01 9.3 0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .6 0 .9.1V11c-3.1.1-5.6 2.6-5.6 5.7 0 3.1 2.5 5.6 5.6 5.6s5.6-2.5 5.6-5.6V0h3.3c0 1.1.9 2 2 2v2c-2.2 0-4-1.8-4-4V.02z" />
+    </svg>
+);
+
+const OrcidIcon = ({ className }: { className?: string }) => (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.541 0 .942.452.942.996 0 .52-.39.985-.942.985-.541 0-.941-.465-.941-.985 0-.544.39-.996.941-.996zM5.03 5.646h4.68v12.708H5.03V5.646zm11.646 12.708h-2.016V5.646h2.016v1.844c.281-.609.938-1.219 2.016-1.219 1.328 0 2.344.859 2.344 2.75v9.333z" />
+    </svg>
+);
+
 const socialLinks = [
     { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/ing-marlon-pérez-06ab32303?utm_source=share_via&utm_content=profile&utm_medium=member_android", external: true },
     { icon: Github, label: "GitHub", href: "https://github.com/marlonperez70", external: true },
-    { icon: GraduationCap, label: "ORCID", href: "https://orcid.org/0009-0001-9166-7497", external: true },
+    { icon: OrcidIcon, label: "ORCID", href: "https://orcid.org/0009-0001-9166-7497", external: true },
     { icon: Youtube, label: "YouTube", href: "https://youtube.com/@marlonperez-ing?si=Dcoba3IRyh-3u7Eg", external: true },
     { icon: Twitter, label: "X (Twitter)", href: "https://x.com/IngMarlonPere", external: true },
     { icon: Mail, label: "Email", href: "mailto:malmachi@unemi.edu.ec", external: false },
