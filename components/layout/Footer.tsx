@@ -23,6 +23,7 @@ const footerLinks = {
 const socialLinks = [
     { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/ing-marlon-pérez-06ab32303?utm_source=share_via&utm_content=profile&utm_medium=member_android", external: true },
     { icon: Github, label: "GitHub", href: "https://github.com/marlonperez70", external: true },
+    { icon: GraduationCap, label: "ORCID", href: "https://orcid.org/0009-0001-9166-7497", external: true },
     { icon: Youtube, label: "YouTube", href: "https://youtube.com/@marlonperez-ing?si=Dcoba3IRyh-3u7Eg", external: true },
     { icon: Twitter, label: "X (Twitter)", href: "https://x.com/IngMarlonPere", external: true },
     { icon: Mail, label: "Email", href: "mailto:malmachi@unemi.edu.ec", external: false },

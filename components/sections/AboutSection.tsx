@@ -7,7 +7,7 @@ const profileData = [
     { icon: User, label: "Identidad", value: "Marlon David Pérez Almachi", color: "text-[var(--neon-cyan)]" },
     { icon: GraduationCap, label: "Formación", value: "Estudiante de Ingeniería en TI (9no Nivel) · UNEMI", color: "text-[var(--neon-violet)]" },
     { icon: Shield, label: "Experiencia", value: "10 años en Seguridad Crítica y Análisis de Datos", color: "text-[var(--neon-green)]" },
-    { icon: Cpu, label: "Especialización", value: "Cybersecurity · IT Audit · Artificial Intelligence", color: "text-[var(--neon-cyan)]" },
+    { icon: Cpu, label: "ORCID iD", value: "0009-0001-9166-7497", color: "text-[#A6CE39]" },
     { icon: Star, label: "Certificaciones", value: "Cisco · Google · UNEMI", color: "text-[var(--neon-amber)]" },
     { icon: Globe, label: "Idiomas", value: "Español (Nativo) · English (B1.2)", color: "text-[var(--neon-green)]" },
 ];

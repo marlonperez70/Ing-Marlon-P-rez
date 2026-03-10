@@ -7,6 +7,7 @@ import { Send, Mail, User, MessageSquare, Loader2, CheckCircle, FileText, Linked
 const socialLinks = [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/ing-marlon-pérez-06ab32303?utm_source=share_via&utm_content=profile&utm_medium=member_android", icon: Linkedin, color: "#0066ff" },
     { label: "GitHub", url: "https://github.com/marlonperez70", icon: Github, color: "#c0c0c0" },
+    { label: "ORCID", url: "https://orcid.org/0009-0001-9166-7497", icon: GraduationCap, color: "#A6CE39" },
     { label: "YouTube", url: "https://youtube.com/@marlonperez-ing?si=Dcoba3IRyh-3u7Eg", icon: Youtube, color: "#FF0000" },
     { label: "X", url: "https://x.com/IngMarlonPere", icon: Twitter, color: "#1DA1F2" },
     { label: "Reddit", url: "https://www.reddit.com/u/Commercial_Report276/s/AExrG2IXnP", icon: Share2, color: "#FF4500" },
