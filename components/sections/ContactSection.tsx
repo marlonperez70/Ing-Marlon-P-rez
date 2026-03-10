@@ -40,11 +40,12 @@ const socialLinks = [
     { label: "GitHub", url: "https://github.com/marlonperez70", icon: Github, color: "#c0c0c0" },
     { label: "ORCID", url: "https://orcid.org/0009-0001-9166-7497", icon: OrcidIcon, color: "#A6CE39" },
     { label: "YouTube", url: "https://youtube.com/@marlonperez-ing?si=Dcoba3IRyh-3u7Eg", icon: Youtube, color: "#FF0000" },
-    { label: "X", url: "https://x.com/IngMarlonPere", icon: Twitter, color: "#1DA1F2" },
+    { label: "X (Twitter)", url: "https://x.com/IngMarlonPere", icon: Twitter, color: "#ffffff" },
     { label: "Reddit", url: "https://www.reddit.com/u/Commercial_Report276/s/AExrG2IXnP", icon: RedditIcon, color: "#FF4500" },
     { label: "Discord", url: "https://discord.gg/P985BWeB", icon: DiscordIcon, color: "#5865F2" },
     { label: "TikTok", url: "https://www.tiktok.com/@ing.marlon.perez?_r=1&_t=ZS-94YLWjKdAjU", icon: TikTokIcon, color: "#ffffff" },
     { label: "Twitch", url: "https://www.twitch.tv/ingmarlonperez2026", icon: TwitchIcon, color: "#9146FF" },
+    { label: "Gmail", url: "mailto:malmachi@unemi.edu.ec", icon: Mail, color: "#EA4335" },
 ];
 
 export function ContactSection() {
@@ -80,44 +81,54 @@ export function ContactSection() {
 
     return (
         <section id="contact" className="py-24 px-4">
-            <div className="max-w-5xl mx-auto">
+            <div className="max-w-6xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-12"
+                    className="mb-12 text-center md:text-left"
                 >
-                    <span className="section-badge">
+                    <span className="section-badge mx-auto md:mx-0">
                         <Mail className="w-3 h-3" />
                         Contacto
                     </span>
                     <h2 className="section-title">
                         Conectemos en <span>Redes Sociales</span>
                     </h2>
-                    <div className="section-divider" />
+                    <div className="section-divider mx-auto md:mx-0" />
                     <p className="text-[var(--text-secondary)] max-w-xl font-sans">
                         Sigue mis avances en investigación científica, ciberseguridad y auditoría IT a través de mis canales oficiales.
                     </p>
                 </motion.div>
 
-                {/* Social links grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
-                    {socialLinks.map((social) => (
-                        <a
+                {/* Social links grid - Reorganized 5 columns on desktop */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-16">
+                    {socialLinks.map((social, index) => (
+                        <motion.a
                             key={social.label}
                             href={social.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="glass-card rounded-2xl p-4 flex flex-col items-center gap-3 hover:border-[var(--neon-cyan)] transition-all group"
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.05 }}
+                            className="glass-card rounded-2xl p-5 flex flex-col items-center gap-3 hover:border-[var(--neon-cyan)] transition-all group hover:bg-[rgba(255,255,255,0.02)]"
                         >
                             <div
-                                className="w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110"
-                                style={{ background: `${social.color}14`, border: `1px solid ${social.color}28` }}
+                                className="w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg"
+                                style={{ 
+                                    background: `${social.color}20`, 
+                                    border: `1px solid ${social.color}40`,
+                                    boxShadow: `0 0 15px ${social.color}15`
+                                }}
                             >
-                                <social.icon className="w-5 h-5" style={{ color: social.color }} />
+                                <social.icon className="w-6 h-6" style={{ color: social.color }} />
                             </div>
-                            <span className="text-xs font-mono text-[var(--text-secondary)]">{social.label}</span>
-                        </a>
+                            <span className="text-xs font-mono font-medium text-[var(--text-primary)] group-hover:text-[var(--neon-cyan)] transition-colors">
+                                {social.label}
+                            </span>
+                        </motion.a>
                     ))}
                 </div>
 
