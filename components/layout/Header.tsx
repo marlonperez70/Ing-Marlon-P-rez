@@ -70,10 +70,10 @@ export function Header() {
             )}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
+                <div className="flex items-center justify-between h-24">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2.5 group">
-                        <div className="relative w-10 h-10 rounded-lg overflow-hidden transition-transform group-hover:scale-105 border border-[var(--border-subtle)]">
+                    <Link href="/" className="flex items-center gap-4 group">
+                        <div className="relative w-20 h-20 rounded-xl overflow-hidden transition-transform group-hover:scale-105 border-2 border-[var(--border-subtle)] shadow-[0_0_20px_rgba(0,229,255,0.2)]">
                             <Image
                                 src="/images/logo.png"
                                 alt="Ing. Marlon Pérez Logo"
@@ -82,10 +82,10 @@ export function Header() {
                             />
                         </div>
                         <div>
-                            <span className="text-[var(--text-primary)] font-semibold text-sm tracking-tight font-sans block">
+                            <span className="text-[var(--text-primary)] font-bold text-lg tracking-tight font-sans block leading-tight">
                                 Ing. Marlon Pérez
                             </span>
-                            <p className="text-[var(--neon-cyan)] text-[10px] font-mono leading-none mt-0.5">
+                            <p className="text-[var(--neon-cyan)] text-xs font-mono leading-none mt-1 uppercase tracking-widest">
                                 Cybersecurity & AI
                             </p>
                         </div>

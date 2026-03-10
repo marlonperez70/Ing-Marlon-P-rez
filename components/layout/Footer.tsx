@@ -66,8 +66,8 @@ export function Footer() {
                             viewport={{ once: true }}
                             className="mb-6"
                         >
-                            <div className="flex items-center gap-2.5 mb-4">
-                                <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-[var(--border-subtle)]">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="relative w-24 h-24 rounded-2xl overflow-hidden border-2 border-[var(--border-subtle)] shadow-[0_0_20px_rgba(0,229,255,0.15)]">
                                     <Image
                                         src="/images/logo.png"
                                         alt="Ing. Marlon Pérez Logo"
@@ -76,8 +76,8 @@ export function Footer() {
                                     />
                                 </div>
                                 <div>
-                                    <p className="text-[var(--text-primary)] font-bold text-sm">Ing. Marlon Pérez</p>
-                                    <p className="text-[10px] text-[var(--neon-cyan)] font-mono mt-0.5">Cybersecurity & AI</p>
+                                    <p className="text-[var(--text-primary)] font-bold text-lg leading-tight">Ing. Marlon Pérez</p>
+                                    <p className="text-xs text-[var(--neon-cyan)] font-mono mt-1 uppercase tracking-widest">Cybersecurity & AI</p>
                                 </div>
                             </div>
                             <p className="text-[var(--text-muted)] text-sm leading-relaxed">
