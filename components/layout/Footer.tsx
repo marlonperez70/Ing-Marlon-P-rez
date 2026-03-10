@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Terminal, Github, Linkedin, Mail, ExternalLink, Shield, FlaskConical, ChevronRight, Youtube, Twitter, Disc, Share2, Video } from "lucide-react";
 
 const footerLinks = {
@@ -66,14 +67,17 @@ export function Footer() {
                             className="mb-6"
                         >
                             <div className="flex items-center gap-2.5 mb-4">
-                                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)] to-[var(--neon-violet)] p-[1px]">
-                                    <div className="w-full h-full rounded-[10px] bg-[var(--bg-void)] flex items-center justify-center">
-                                        <Terminal className="w-4 h-4 text-[var(--neon-cyan)]" />
-                                    </div>
+                                <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-[var(--border-subtle)]">
+                                    <Image
+                                        src="/images/logo.png"
+                                        alt="Ing. Marlon Pérez Logo"
+                                        fill
+                                        className="object-cover"
+                                    />
                                 </div>
                                 <div>
-                                    <p className="text-[var(--text-primary)] font-bold text-sm">Marlon Pérez</p>
-                                    <p className="text-[10px] text-[var(--neon-cyan)] font-mono">Cybersecurity & AI</p>
+                                    <p className="text-[var(--text-primary)] font-bold text-sm">Ing. Marlon Pérez</p>
+                                    <p className="text-[10px] text-[var(--neon-cyan)] font-mono mt-0.5">Cybersecurity & AI</p>
                                 </div>
                             </div>
                             <p className="text-[var(--text-muted)] text-sm leading-relaxed">

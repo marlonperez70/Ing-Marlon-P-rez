@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Terminal, FlaskConical } from "lucide-react";
 import { clsx } from "clsx";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
 const navItems = [
@@ -27,7 +28,7 @@ export function Header() {
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
-            
+
             if (pathname === "/") {
                 const sections = ["home", "about", "skills", "experience", "certifications", "contact"];
                 for (const section of [...sections].reverse()) {
@@ -48,7 +49,7 @@ export function Header() {
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: typeof navItems[0]) => {
         setIsMobileMenuOpen(false);
-        
+
         // If we are on home and clicking an anchor on home
         if (pathname === "/" && item.href.startsWith("/#")) {
             e.preventDefault();
@@ -72,16 +73,19 @@ export function Header() {
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2.5 group">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--neon-cyan)] to-[var(--neon-violet)] p-[1px] transition-transform group-hover:scale-105">
-                            <div className="w-full h-full rounded-[7px] bg-[var(--bg-void)] flex items-center justify-center">
-                                <Terminal className="w-4 h-4 text-[var(--neon-cyan)]" />
-                            </div>
+                        <div className="relative w-10 h-10 rounded-lg overflow-hidden transition-transform group-hover:scale-105 border border-[var(--border-subtle)]">
+                            <Image
+                                src="/images/logo.png"
+                                alt="Ing. Marlon Pérez Logo"
+                                fill
+                                className="object-cover"
+                            />
                         </div>
                         <div>
                             <span className="text-[var(--text-primary)] font-semibold text-sm tracking-tight font-sans block">
-                                Marlon Pérez
+                                Ing. Marlon Pérez
                             </span>
-                            <p className="text-[var(--neon-cyan)] text-[10px] font-mono leading-none">
+                            <p className="text-[var(--neon-cyan)] text-[10px] font-mono leading-none mt-0.5">
                                 Cybersecurity & AI
                             </p>
                         </div>
