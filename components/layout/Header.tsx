@@ -81,7 +81,7 @@ export function Header() {
                                 src="/images/logo.png"
                                 alt="Ing. Marlon Pérez Logo"
                                 fill
-                                className="object-cover p-1 filter brightness-125 contrast-110 saturate-110"
+                                className="object-cover p-1"
                             />
                         </div>
                         <div className="flex flex-col">
