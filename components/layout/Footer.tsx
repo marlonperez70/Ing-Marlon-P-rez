@@ -75,7 +75,7 @@ export function Footer() {
                                         src="/images/logo.png"
                                         alt="Ing. Marlon Pérez Logo"
                                         fill
-                                        className="object-cover p-1.5"
+                                        className="object-cover p-1.5 rounded-[12px]"
                                     />
                                 </div>
                                 <div>
