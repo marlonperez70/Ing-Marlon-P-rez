@@ -154,12 +154,29 @@ export function ChatWidget() {
 
                                     {/* Bubble */}
                                     <div
-                                        className={`max-w-[80%] px-3.5 py-2.5 rounded-2xl text-xs leading-relaxed font-sans ${msg.role === "user"
+                                        className={`max-w-[80%] px-4 py-3 rounded-2xl text-xs leading-relaxed font-sans ${msg.role === "user"
                                                 ? "bg-[rgba(168,85,247,0.15)] text-[var(--text-primary)] rounded-tr-sm border border-[rgba(168,85,247,0.2)]"
                                                 : "bg-[rgba(255,255,255,0.05)] text-[var(--text-secondary)] rounded-tl-sm border border-[var(--border-subtle)]"
                                             }`}
                                     >
-                                        {msg.content || (
+                                        {msg.content ? (
+                                            <div className="chat-content-formatted space-y-1">
+                                                {msg.content.split('\n').map((line, lineIdx) => (
+                                                    <p key={lineIdx}>
+                                                        {line.split(/(\*\*.*?\*\*)/g).map((part, partIdx) => {
+                                                            if (part.startsWith('**') && part.endsWith('**')) {
+                                                                return (
+                                                                    <strong key={partIdx} className="text-[var(--neon-cyan)] font-bold">
+                                                                        {part.slice(2, -2)}
+                                                                    </strong>
+                                                                );
+                                                            }
+                                                            return part;
+                                                        })}
+                                                    </p>
+                                                ))}
+                                            </div>
+                                        ) : (
                                             <span className="flex gap-1">
                                                 <span className="w-1.5 h-1.5 bg-[var(--neon-cyan)] rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
                                                 <span className="w-1.5 h-1.5 bg-[var(--neon-cyan)] rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
