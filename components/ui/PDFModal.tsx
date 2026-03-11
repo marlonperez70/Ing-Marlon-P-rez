@@ -77,19 +77,34 @@ export function PDFModal({ isOpen, onClose, pdfUrl, title }: PDFModalProps) {
                         </div>
 
                         {/* PDF Viewer Body */}
-                        <div className="flex-1 bg-black/40 relative">
+                        <div className="flex-1 bg-black/40 relative overflow-hidden">
                             {isLoading && (
                                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 z-10">
                                     <Loader2 className="w-8 h-8 text-[var(--neon-cyan)] animate-spin" />
                                     <p className="font-mono text-xs text-[var(--neon-cyan)] animate-pulse">Cargando visualizador seguro...</p>
                                 </div>
                             )}
+                            
+                            {/* Desktop: Native Iframe | Mobile: Google Docs Viewer Fallback */}
                             <iframe
-                                src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
+                                src={`https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true`}
                                 className="w-full h-full border-0"
                                 onLoad={() => setIsLoading(false)}
                                 title={title}
                             />
+
+                            {/* Mobile Overlay: In case Google Viewer is blocked or slow, provide a direct action */}
+                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 md:hidden">
+                                <a 
+                                    href={pdfUrl} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="px-6 py-3 rounded-xl bg-[var(--neon-cyan)] text-black font-bold text-xs shadow-[0_0_20px_rgba(0,229,255,0.4)] flex items-center gap-2"
+                                >
+                                    <ExternalLink className="w-4 h-4" />
+                                    ABRIR DOCUMENTO COMPLETO
+                                </a>
+                            </div>
                         </div>
 
                         {/* Footer Info */}
