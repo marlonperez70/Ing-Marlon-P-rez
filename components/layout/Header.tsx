@@ -73,21 +73,27 @@ export function Header() {
                 <div className="flex items-center justify-between h-24">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-4 group">
-                        <div className="relative w-20 h-20 rounded-xl overflow-hidden transition-transform group-hover:scale-105 border-2 border-[var(--border-subtle)] shadow-[0_0_20px_rgba(0,229,255,0.2)]">
+                        <div className="relative w-20 h-20 rounded-xl overflow-hidden transition-all duration-500 group-hover:scale-105 border-2 border-[var(--neon-cyan)]/20 shadow-[0_0_25px_rgba(0,229,255,0.15)] bg-[rgba(0,229,255,0.03)]">
+                            {/* Inner Glow Aura */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--neon-cyan)]/10 to-transparent opacity-50" />
+                            
                             <Image
                                 src="/images/logo.png"
                                 alt="Ing. Marlon Pérez Logo"
                                 fill
-                                className="object-cover"
+                                className="object-cover p-1 filter brightness-125 contrast-110 saturate-110"
                             />
                         </div>
-                        <div>
-                            <span className="text-[var(--text-primary)] font-bold text-lg tracking-tight font-sans block leading-tight">
+                        <div className="flex flex-col">
+                            <span className="text-[var(--text-primary)] font-bold text-lg tracking-tight font-sans block leading-tight group-hover:text-[var(--neon-cyan)] transition-colors">
                                 Ing. Marlon Pérez
                             </span>
-                            <p className="text-[var(--neon-cyan)] text-xs font-mono leading-none mt-1 uppercase tracking-widest">
-                                Cybersecurity & AI
-                            </p>
+                            <div className="flex items-center gap-2 mt-1">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--neon-cyan)] animate-pulse" />
+                                <p className="text-[var(--neon-cyan)] text-[10px] font-mono leading-none uppercase tracking-widest">
+                                    Cybersecurity & AI
+                                </p>
+                            </div>
                         </div>
                     </Link>
 
