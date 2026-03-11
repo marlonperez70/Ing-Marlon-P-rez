@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ChatWidget } from "@/components/chat/ChatWidget";
 import { FlaskConical, ArrowRight, BarChart3, Clock, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { clsx } from "clsx";
 
 export const metadata: Metadata = {
     title: "Proyectos de Investigación Científica | Ing. Marlon Pérez",
@@ -21,13 +22,15 @@ const projects = [
         color: "#00E5FF",
         year: 2025,
         institution: "UNEMI",
+        videoUrl: "https://www.tiktok.com/player/v1/7408300734292184325",
+        videoType: "tiktok" as const,
         description:
-            "Investigación sobre la aplicación de modelos de Machine Learning y Redes Neuronales para la detección automática de intrusiones y amenazas en redes corporativas. Se evalúan algoritmos de clasificación supervisada sobre datasets públicos de ciberseguridad.",
-        keywords: ["IDS", "Machine Learning", "Redes Neuronales", "Ciberseguridad", "Detección de Intrusiones"],
+            "Investigación sobre la aplicación de modelos de Machine Learning y Redes Neuronales para la detección automática de intrusiones y amenazas en redes corporativas.",
+        keywords: ["IDS", "IA Ética", "Ciberseguridad"],
         objectives: [
-            "Evaluar la eficacia de algoritmos ML en detección de intrusiones",
-            "Comparar modelos CNN vs Random Forest en datasets de tráfico de red",
-            "Implementar un prototipo de IDS basado en IA",
+            "Evaluar eficacia de algoritmos ML en detección de intrusiones",
+            "Análisis Ético: Caso Sakana IA (The Scientist)",
+            "Implementar prototipo de IDS basado en IA",
         ],
     },
     {
@@ -39,13 +42,15 @@ const projects = [
         color: "#A855F7",
         year: 2025,
         institution: "UNEMI",
+        videoUrl: "https://www.youtube.com/embed/-MjXtWBno-4",
+        videoType: "youtube" as const,
         description:
-            "Estudio comparativo de marcos de control para auditoría de Tecnologías de la Información (COBIT, ISO 27001, NIST) aplicados a organizaciones del sector público en Ecuador. Se propone un modelo híbrido adaptado al contexto latinoamericano.",
-        keywords: ["Auditoría TI", "COBIT", "ISO 27001", "NIST", "Sector Público", "Ecuador"],
+            "Estudio comparativo de marcos de control (COBIT, ISO 27001, NIST) aplicados a organizaciones del sector público en Ecuador. Se enfoca en Entrega de Valor y Gestión de Riesgos.",
+        keywords: ["Auditoría TI", "COBIT", "Gestión de Riesgos"],
         objectives: [
-            "Comparar marcos de control IT en organizaciones públicas ecuatorianas",
+            "Comparar marcos de control IT en organizaciones públicas",
             "Identificar brechas de cumplimiento normativo",
-            "Proponer un modelo híbrido de auditoría adaptado al contexto local",
+            "Proponer modelo híbrido de auditoría estratégica",
         ],
     },
 ];
@@ -90,103 +95,92 @@ export default function InvestigacionPage() {
                         </p>
                     </div>
 
-                    {/* Stats bar */}
-                    <div className="grid grid-cols-3 gap-4 mb-12">
-                        {[
-                            { value: projects.length.toString(), label: "Proyectos activos" },
-                            { value: "UNEMI", label: "Institución" },
-                            { value: "2025", label: "Año académico" },
-                        ].map((stat) => (
-                            <div key={stat.label} className="glass-card rounded-xl p-4 text-center">
-                                <p className="text-xl font-bold gradient-text font-mono">{stat.value}</p>
-                                <p className="text-xs text-[var(--text-muted)] mt-1 font-sans">{stat.label}</p>
-                            </div>
-                        ))}
-                    </div>
-
                     {/* Projects list */}
-                    <div className="space-y-6">
+                    <div className="space-y-10">
                         {projects.map((project) => {
                             const statusInfo = statusConfig[project.status];
                             return (
-                                <div key={project.slug} className="glass-card rounded-2xl p-6 md:p-8 hover:border-[rgba(168,85,247,0.3)] transition-all duration-300">
-                                    {/* Header row */}
-                                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
-                                        <div className="flex-1">
-                                            <div className="flex flex-wrap items-center gap-2 mb-2">
-                                                <span
-                                                    className="badge text-[10px]"
-                                                    style={{ background: `${project.color}14`, color: project.color, border: `1px solid ${project.color}28` }}
-                                                >
-                                                    {project.area}
-                                                </span>
-                                                <span className="badge badge-violet text-[10px]">{project.institution}</span>
-                                                <span className="text-[var(--text-muted)] text-xs font-mono">{project.year}</span>
+                                <div key={project.slug} className="glass-card rounded-3xl overflow-hidden border border-[rgba(255,255,255,0.05)] hover:border-[rgba(168,85,247,0.2)] transition-all duration-500 shadow-2xl">
+                                    <div className="grid lg:grid-cols-5 gap-0">
+                                        {/* Multimedia Section */}
+                                        <div className="lg:col-span-2 bg-black/40 flex items-center justify-center p-4 border-b lg:border-b-0 lg:border-r border-[rgba(255,255,255,0.05)]">
+                                            <div className={clsx(
+                                                "w-full relative shadow-2xl overflow-hidden rounded-2xl",
+                                                project.videoType === "tiktok" ? "aspect-[9/16] max-w-[240px] mx-auto" : "aspect-video"
+                                            )}>
+                                                <iframe
+                                                    src={project.videoUrl}
+                                                    title={project.title}
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                    className="absolute inset-0 w-full h-full border-0"
+                                                />
                                             </div>
-                                            <h2 className="text-[var(--text-primary)] font-bold text-xl font-sans leading-snug">
+                                        </div>
+
+                                        {/* Content Section */}
+                                        <div className="lg:col-span-3 p-6 md:p-8 flex flex-col">
+                                            <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+                                                <div className="flex flex-wrap items-center gap-2">
+                                                    <span
+                                                        className="badge text-[10px]"
+                                                        style={{ background: `${project.color}14`, color: project.color, border: `1px solid ${project.color}28` }}
+                                                    >
+                                                        {project.area}
+                                                    </span>
+                                                    <span className="badge badge-violet text-[10px]">{project.institution}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2 font-mono text-xs" style={{ color: statusInfo.color }}>
+                                                    <statusInfo.Icon className="w-3.5 h-3.5" />
+                                                    {statusInfo.label}
+                                                </div>
+                                            </div>
+
+                                            <h2 className="text-[var(--text-primary)] font-bold text-2xl font-sans leading-snug mb-4">
                                                 {project.title}
                                             </h2>
-                                        </div>
-                                        <div className="flex items-center gap-2 shrink-0 font-mono text-xs" style={{ color: statusInfo.color }}>
-                                            <statusInfo.Icon className="w-3.5 h-3.5" />
-                                            {statusInfo.label}
+
+                                            {/* Progress */}
+                                            <div className="mb-6">
+                                                <div className="flex justify-between text-xs mb-2 font-mono">
+                                                    <span className="text-[var(--text-muted)]">Progreso</span>
+                                                    <span style={{ color: project.color }}>{project.progress}%</span>
+                                                </div>
+                                                <div className="progress-track h-1.5">
+                                                    <div
+                                                        className="progress-fill h-full"
+                                                        style={{
+                                                            width: `${project.progress}%`,
+                                                            background: `linear-gradient(90deg, ${project.color}, ${project.color}80)`,
+                                                            boxShadow: `0 0 10px ${project.color}40`,
+                                                        }}
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-6 font-sans">
+                                                {project.description}
+                                            </p>
+
+                                            <div className="mt-auto pt-6 border-t border-[rgba(255,255,255,0.05)] flex items-center justify-between">
+                                                <div className="flex flex-wrap gap-1.5">
+                                                    {project.keywords.slice(0, 3).map((kw) => (
+                                                        <span key={kw} className="text-[9px] px-2 py-0.5 rounded-full border border-[rgba(255,255,255,0.1)] text-[var(--text-muted)] font-mono">
+                                                            {kw}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                                <Link
+                                                    href={`/investigacion/${project.slug}`}
+                                                    className="inline-flex items-center gap-1.5 text-sm font-bold hover:gap-2.5 transition-all"
+                                                    style={{ color: project.color }}
+                                                >
+                                                    Explorar proyecto
+                                                    <ArrowRight className="w-4 h-4" />
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    {/* Progress */}
-                                    <div className="mb-5">
-                                        <div className="flex justify-between text-xs mb-2 font-mono">
-                                            <span className="text-[var(--text-muted)]">Progreso de investigación</span>
-                                            <span style={{ color: project.color }}>{project.progress}%</span>
-                                        </div>
-                                        <div className="progress-track">
-                                            <div
-                                                className="progress-fill"
-                                                style={{
-                                                    width: `${project.progress}%`,
-                                                    background: `linear-gradient(90deg, ${project.color}, ${project.color}80)`,
-                                                    boxShadow: `0 0 8px ${project.color}50`,
-                                                }}
-                                            />
-                                        </div>
-                                    </div>
-
-                                    {/* Description */}
-                                    <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-5">
-                                        {project.description}
-                                    </p>
-
-                                    {/* Objectives */}
-                                    <div className="mb-5">
-                                        <p className="text-[var(--text-muted)] text-xs font-mono uppercase tracking-wider mb-2">Objetivos</p>
-                                        <ul className="space-y-1.5">
-                                            {project.objectives.map((obj) => (
-                                                <li key={obj} className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
-                                                    <span className="mt-2 w-1 h-1 rounded-full shrink-0" style={{ background: project.color }} />
-                                                    {obj}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    {/* Keywords */}
-                                    <div className="flex flex-wrap gap-1.5 mb-5">
-                                        {project.keywords.map((kw) => (
-                                            <span key={kw} className="text-[10px] px-2 py-0.5 rounded font-mono" style={{ background: `${project.color}0d`, color: project.color }}>
-                                                {kw}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    {/* View detail link */}
-                                    <Link
-                                        href={`/investigacion/${project.slug}`}
-                                        className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors"
-                                        style={{ color: project.color }}
-                                    >
-                                        Ver detalle completo
-                                        <ArrowRight className="w-3.5 h-3.5" />
-                                    </Link>
                                 </div>
                             );
                         })}
