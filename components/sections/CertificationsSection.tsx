@@ -35,7 +35,7 @@ const certifications = [
         title: "Reconocimiento a la Investigación",
         category: "Science",
         color: "#A855F7",
-        file: "/docs/certifications/Concurso #HilandoCiencia2025 (1).pdf",
+        file: "/docs/certifications/certificado-unemi-hilando-ciencia.pdf",
         description: "Primer lugar/Participación destacada en el concurso de divulgación científica #HilandoCiencia2025.",
     },
     {
