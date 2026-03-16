@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -25,10 +25,10 @@ export default function Home() {
     }
   }, []);
 
-  const handleLoaderComplete = () => {
+  const handleLoaderComplete = useCallback(() => {
     setIsLoading(false);
     sessionStorage.setItem("v3_intro_shown", "true");
-  };
+  }, []);
 
   return (
     <>
@@ -38,7 +38,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <div className={isLoading ? "h-screen overflow-hidden" : ""}>
+      <div className={isLoading ? "fixed inset-0 overflow-hidden opacity-0 pointer-events-none" : "opacity-100 transition-opacity duration-1000"}>
         <Header />
         <main>
           <HeroSection />
