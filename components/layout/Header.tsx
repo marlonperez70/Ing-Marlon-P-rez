@@ -7,6 +7,7 @@ import { clsx } from "clsx";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { AuthButton } from "@/components/auth/AuthButton";
 
 const navItems = [
     { label: "inicio", href: "/", id: "home" },
@@ -124,14 +125,17 @@ export function Header() {
                         ))}
                     </nav>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden p-2 text-[var(--text-secondary)] hover:text-[var(--neon-cyan)] rounded-lg hover:bg-white/5 transition-colors"
-                        aria-label="Toggle menu"
-                    >
-                        {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                    </button>
+                    {/* Auth & Mobile Menu */}
+                    <div className="flex items-center gap-4">
+                        <AuthButton />
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="md:hidden p-2 text-[var(--text-secondary)] hover:text-[var(--neon-cyan)] rounded-lg hover:bg-white/5 transition-colors"
+                            aria-label="Toggle menu"
+                        >
+                            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                        </button>
+                    </div>
                 </div>
             </div>
 

@@ -775,4 +775,16 @@ section {
     bottom: 1rem;
     right: 1rem;
   }
-}
+  }
+
+  /* ============================================
+   v3.1 SPECIAL EFFECTS (FUI/HUD)
+   =========================================== */
+  @keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+  }
+
+  .animate-scanline {
+  animation: scanline 8s linear infinite;
+  }

@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { TypewriterEffect } from "@/components/ui/TypewriterEffect";
 import { MapPin, Shield, Brain, ChevronDown, Sparkles, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 const roles = [
     { icon: Shield, label: "Cybersecurity Specialist", color: "text-[var(--neon-cyan)]" },
@@ -12,6 +14,19 @@ const roles = [
 ];
 
 export function HeroSection() {
+    const [userName, setUserName] = useState<string>("visitor");
+    const supabase = createClient();
+
+    useEffect(() => {
+        const getUser = async () => {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user?.user_metadata?.full_name) {
+                setUserName(user.user_metadata.full_name.split(' ')[0].toLowerCase());
+            }
+        };
+        getUser();
+    }, [supabase.auth]);
+
     const scrollToAbout = () => {
         document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
     };
@@ -49,9 +64,9 @@ export function HeroSection() {
                     transition={{ delay: 0.2, duration: 0.6 }}
                     className="mb-4 font-mono text-sm text-[var(--text-muted)]"
                 >
-                    <span className="text-[var(--neon-green)]">visitor@marlon:~$ </span>
+                    <span className="text-[var(--neon-green)]">{userName}@marlon:~$ </span>
                     <TypewriterEffect
-                        text="cat perfil-profesional.json"
+                        text={userName === "visitor" ? "cat perfil-profesional.json" : `welcome --user "${userName}"`}
                         speed={45}
                         className="text-[var(--text-secondary)]"
                     />
