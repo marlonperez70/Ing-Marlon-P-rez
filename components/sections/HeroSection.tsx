@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronDown, ExternalLink } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,77 +15,70 @@ export function HeroSection() {
             id="home"
             className="h-screen w-full relative overflow-hidden bg-black"
         >
-            {/* 1. THE MAIN TACTICAL IMAGE BACKGROUND */}
+            {/* 1. BACKGROUND IMAGE (Positioned to the right) */}
             <div className="absolute inset-0 z-0">
-                <Image
-                    src="/images/tactical_high_density_hud.png"
-                    alt="Tactical HUD Interface"
-                    fill
-                    className="object-cover opacity-60"
-                    priority
-                />
-                {/* Dark Overlay to ensure readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
+                <div className="relative w-full h-full">
+                    <Image
+                        src="/images/tactical_high_density_hud.png"
+                        alt="Tactical HUD"
+                        fill
+                        className="object-cover object-right opacity-50"
+                        priority
+                    />
+                    {/* THE "SAFE ZONE" GRADIENT: Fades from black (left) to transparent (right) */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
+                    {/* Bottom fade to blend with next section */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
+                </div>
             </div>
 
-            {/* 2. LIVE MONITOR EFFECTS (Scanlines & Pulse) */}
-            <div className="absolute inset-0 z-10 pointer-events-none">
-                {/* Scanlines */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-30" />
-                {/* Vignette */}
-                <div className="absolute inset-0 shadow-[inset_0_0_150px_rgba(0,0,0,0.8)]" />
-            </div>
-
-            {/* 3. CENTER CONTENT (Branding & CTAs) */}
-            <div className="relative z-20 h-full flex items-center justify-center px-6 pt-20">
+            {/* 2. CLEAN CONTENT (No boxes, no noise) */}
+            <div className="relative z-20 h-full max-w-7xl mx-auto px-8 md:px-20 flex flex-col justify-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="glass-card bg-black/60 backdrop-blur-md border border-white/10 p-6 md:p-10 rounded-xl max-w-2xl w-full"
+                    className="max-w-3xl"
                 >
-                    <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
-                        <div className="w-2 h-2 bg-[#00E5FF] animate-pulse" />
-                        <span className="text-[#00E5FF] font-mono text-[9px] tracking-[0.4em] uppercase">
-                            Authorized Systems Operator
-                        </span>
-                    </div>
-                    
-                    <h1 className="text-3xl md:text-5xl font-black italic tracking-tighter text-white uppercase leading-tight mb-4 text-center md:text-left">
-                        Ing. Marlon <br /> <span className="text-[#00E5FF] drop-shadow-[0_0_10px_rgba(0,229,255,0.4)]">Pérez Almachi</span>
+                    <h1 className="text-6xl md:text-9xl font-black italic tracking-tighter text-white uppercase leading-[0.8] mb-8">
+                        Ing. Marlon <br /> 
+                        <span className="text-[#00E5FF] drop-shadow-[0_0_20px_rgba(0,229,255,0.3)]">Pérez</span>
                     </h1>
 
-                    <p className="text-white/70 text-xs md:text-base max-w-lg mb-8 font-sans tracking-wide leading-relaxed text-center md:text-left">
-                        Especialista en <span className="text-white font-bold">Ciberseguridad & Auditoría IT</span>. 
-                        Investigador de IA avanzada para la defensa de infraestructuras críticas.
+                    <p className="text-white/50 text-sm md:text-lg font-sans tracking-[0.2em] leading-relaxed mb-12 max-w-lg uppercase">
+                        Cybersecurity Specialist <span className="mx-2 text-white/20">|</span> 
+                        IT Auditor <span className="mx-2 text-white/20">|</span> 
+                        AI Researcher
                     </p>
 
-                    <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                        <button onClick={scrollToAbout} className="px-6 py-3 bg-[#00E5FF] text-black text-[10px] uppercase tracking-widest font-black hover:bg-white transition-colors rounded-sm">
-                            Ingresar al Sistema
+                    <div className="flex flex-wrap gap-10">
+                        <button 
+                            onClick={scrollToAbout} 
+                            className="group relative flex items-center gap-4 text-white transition-all"
+                        >
+                            <span className="text-[10px] uppercase tracking-[0.4em] font-black group-hover:text-[#00E5FF]">Explorar Portafolio</span>
+                            <div className="w-12 h-[1px] bg-white/20 group-hover:w-20 group-hover:bg-[#00E5FF] transition-all" />
                         </button>
-                        <Link href="/investigacion" className="px-6 py-3 border border-white/20 text-white text-[10px] uppercase tracking-widest font-bold hover:bg-white/10 transition-colors rounded-sm">
-                            Investigaciones
+                        
+                        <Link href="/investigacion" className="group flex items-center gap-4 text-white/40 hover:text-white transition-all">
+                            <span className="text-[10px] uppercase tracking-[0.4em] font-bold">Investigación I+D</span>
+                            <div className="w-8 h-[1px] bg-white/10 group-hover:bg-white/40 transition-all" />
                         </Link>
                     </div>
                 </motion.div>
             </div>
 
-            {/* 4. SCROLL INDICATOR */}
+            {/* 3. DISCREET SCROLL INDICATOR */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30"
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30"
             >
-                <motion.button
-                    onClick={scrollToAbout}
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="text-[#00E5FF] hover:text-white transition-colors"
-                >
-                    <ChevronDown className="w-8 h-8" />
-                </motion.button>
+                <div className="flex flex-col items-center gap-3">
+                    <span className="text-[8px] text-white/20 tracking-[0.5em] uppercase rotate-90 mb-4">Scroll</span>
+                    <div className="w-[1px] h-12 bg-gradient-to-b from-[#00E5FF] to-transparent animate-pulse" />
+                </div>
             </motion.div>
         </section>
     );

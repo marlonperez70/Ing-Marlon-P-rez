@@ -51,14 +51,17 @@ export function Header() {
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: typeof navItems[0]) => {
         setIsMobileMenuOpen(false);
 
-        // If we are on home and clicking an anchor on home
-        if (pathname === "/" && item.href.startsWith("/#")) {
+        // Si ya estamos en la Home y es un ancla interna
+        if (pathname === "/" && item.href.includes("/#")) {
             e.preventDefault();
-            const id = item.href.replace("/#", "");
+            const id = item.href.split("#")[1];
             const el = document.getElementById(id);
-            if (el) el.scrollIntoView({ behavior: "smooth" });
-            router.push(item.href, { scroll: false });
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+                router.push(item.href, { scroll: false });
+            }
         }
+        // Si NO estamos en la Home, dejamos que el Link nativo de Next.js haga su trabajo
     };
 
     return (

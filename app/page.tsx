@@ -16,29 +16,42 @@ import { IntroLoader } from "@/components/ui/IntroLoader";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Check if intro has been shown this session
-    const hasShownIntro = sessionStorage.getItem("v3_intro_shown");
-    if (hasShownIntro) {
-      setIsLoading(false);
-    }
+    setIsClient(true);
+    // Introducción forzada en cada carga
+    setIsLoading(true);
   }, []);
 
   const handleLoaderComplete = useCallback(() => {
     setIsLoading(false);
     sessionStorage.setItem("v3_intro_shown", "true");
+
+    // Lógica Senior: Si hay un hash en la URL, hacemos scroll después de la carga
+    setTimeout(() => {
+      const hash = window.location.hash;
+      if (hash) {
+        const id = hash.replace("#", "");
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }, 800); // Esperamos a que la transición de opacidad termine
   }, []);
+
+  if (!isClient) return null;
 
   return (
     <>
       <AnimatePresence mode="wait">
         {isLoading && (
-          <IntroLoader onComplete={handleLoaderComplete} />
+          <IntroLoader key="intro-loader" onComplete={handleLoaderComplete} />
         )}
       </AnimatePresence>
 
-      <div className={isLoading ? "fixed inset-0 overflow-hidden opacity-0 pointer-events-none" : "opacity-100 transition-opacity duration-1000"}>
+      <div className={`transition-opacity duration-1000 ${isLoading ? "opacity-0 h-screen overflow-hidden" : "opacity-100"}`}>
         <Header />
         <main>
           <HeroSection />
