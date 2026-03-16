@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Terminal, Github, Linkedin, Mail, ExternalLink, Shield, FlaskConical, ChevronRight, Youtube, Twitter, Disc, Share2, Video } from "lucide-react";
+import { Terminal, Github, Linkedin, Mail, ExternalLink, Shield, FlaskConical, ChevronRight, Youtube, Twitter } from "lucide-react";
+import { LogoMark } from "@/components/ui/LogoMark";
 
 const footerLinks = {
     "Portafolio": [
@@ -66,18 +67,12 @@ export function Footer() {
                             viewport={{ once: true }}
                             className="mb-6"
                         >
-                            <div className="flex items-center gap-4 mb-6 group">
-                                <div className="relative w-24 h-24 rounded-2xl overflow-hidden border-2 border-[var(--neon-cyan)]/20 shadow-[0_0_30px_rgba(0,229,255,0.1)] bg-[rgba(0,229,255,0.03)] transition-all duration-500 group-hover:border-[var(--neon-cyan)]/40">
-                                    {/* Subtle highlight */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
-                                    
-                                    <Image
-                                        src="/images/logo.png"
-                                        alt="Ing. Marlon Pérez Logo"
-                                        fill
-                                        className="object-cover p-1.5 rounded-[12px]"
-                                    />
-                                </div>
+                            <div className="flex items-center gap-4 mb-6 group cursor-pointer" onClick={() => scrollTo("#home")}>
+                                <LogoMark
+                                    size={88}
+                                    animated
+                                    className="transition-transform duration-500 group-hover:scale-105 drop-shadow-[0_0_10px_rgba(0,229,255,0.3)] group-hover:drop-shadow-[0_0_22px_rgba(0,229,255,0.6)] shrink-0"
+                                />
                                 <div>
                                     <p className="text-[var(--text-primary)] font-bold text-lg leading-tight group-hover:text-[var(--neon-cyan)] transition-colors">Ing. Marlon Pérez</p>
                                     <p className="text-xs text-[var(--neon-cyan)] font-mono mt-1 uppercase tracking-widest">Cybersecurity & AI</p>

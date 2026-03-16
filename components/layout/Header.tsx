@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Terminal, FlaskConical } from "lucide-react";
 import { clsx } from "clsx";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { AuthButton } from "@/components/auth/AuthButton";
+import { LogoMark } from "@/components/ui/LogoMark";
 
 const navItems = [
     { label: "inicio", href: "/", id: "home" },
@@ -77,17 +77,11 @@ export function Header() {
                 <div className="flex items-center justify-between h-24">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-4 group">
-                        <div className="relative w-20 h-20 rounded-xl overflow-hidden transition-all duration-500 group-hover:scale-105 border-2 border-[var(--neon-cyan)]/20 shadow-[0_0_25px_rgba(0,229,255,0.15)] bg-[rgba(0,229,255,0.03)]">
-                            {/* Inner Glow Aura */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--neon-cyan)]/10 to-transparent opacity-50" />
-                            
-                            <Image
-                                src="/images/logo.png"
-                                alt="Ing. Marlon Pérez Logo"
-                                fill
-                                className="object-cover p-1 rounded-[10px]"
-                            />
-                        </div>
+                        <LogoMark
+                            size={72}
+                            animated
+                            className="transition-transform duration-500 group-hover:scale-110 drop-shadow-[0_0_12px_rgba(0,229,255,0.4)] group-hover:drop-shadow-[0_0_24px_rgba(0,229,255,0.7)]"
+                        />
                         <div className="flex flex-col">
                             <span className="text-[var(--text-primary)] font-bold text-lg tracking-tight font-sans block leading-tight group-hover:text-[var(--neon-cyan)] transition-colors">
                                 Ing. Marlon Pérez

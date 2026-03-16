@@ -2,7 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User, Loader2, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, User, Loader2, Sparkles } from "lucide-react";
+import { LogoMark } from "@/components/ui/LogoMark";
+
 
 type Message = {
     role: "user" | "assistant";
@@ -113,8 +115,8 @@ export function ChatWidget() {
                     >
                         {/* Header */}
                         <div className="chat-header">
-                            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[var(--neon-cyan)] to-[var(--neon-violet)] flex items-center justify-center shrink-0">
-                                <Bot className="w-4 h-4 text-white" />
+                            <div className="w-10 h-10 flex items-center justify-center shrink-0">
+                                <LogoMark size={40} animated={false} />
                             </div>
                             <div className="flex-1">
                                 <p className="text-[var(--text-primary)] font-semibold text-sm font-sans">Asistente IA</p>
@@ -140,15 +142,16 @@ export function ChatWidget() {
                                 >
                                     {/* Avatar */}
                                     <div
-                                        className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${msg.role === "user"
+                                        className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 relative ${
+                                                msg.role === "user"
                                                 ? "bg-[rgba(168,85,247,0.2)] border border-[rgba(168,85,247,0.3)]"
-                                                : "bg-[rgba(0,229,255,0.12)] border border-[rgba(0,229,255,0.2)]"
+                                                : ""
                                             }`}
                                     >
                                         {msg.role === "user" ? (
-                                            <User className="w-3.5 h-3.5 text-[var(--neon-violet)]" />
+                                            <User className="w-4 h-4 text-[var(--neon-violet)]" />
                                         ) : (
-                                            <Bot className="w-3.5 h-3.5 text-[var(--neon-cyan)]" />
+                                            <LogoMark size={32} animated={false} />
                                         )}
                                     </div>
 
@@ -231,8 +234,8 @@ export function ChatWidget() {
                             <X className="w-5 h-5 text-white" />
                         </motion.div>
                     ) : (
-                        <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                            <MessageCircle className="w-5 h-5 text-white" />
+                        <motion.div key="open" initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} transition={{ duration: 0.2 }}>
+                            <LogoMark size={36} animated={false} />
                         </motion.div>
                     )}
                 </AnimatePresence>

@@ -43,6 +43,10 @@ export const metadata: Metadata = {
     title: "Ing. Marlon Pérez | Cybersecurity Specialist",
     description: "Ingeniero TI · Ciberseguridad · Auditoría IT · Investigador IA",
   },
+  icons: {
+    icon: "/images/logo-cyan.png",
+    apple: "/images/logo-cyan.png",
+  },
 };
 
 export default function RootLayout({
