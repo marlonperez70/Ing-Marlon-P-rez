@@ -68,7 +68,7 @@ This project serves as a showcase for my scientific investigations in:
 ### 🤝 Connect
 - **LinkedIn:** [Ing. Marlon Pérez](https://www.linkedin.com/in/ing-marlon-pérez-06ab32303)
 - **ORCID:** [0009-0001-9166-7497](https://orcid.org/0009-0001-9166-7497)
-- **Portfolio:** [Live Mission Control](https://marlon-portfolio.vercel.app)
+- **Portfolio:** [Live Mission Control](https://ingmarlonperez.vercel.app/)
 
 ---
 <p align="center">
