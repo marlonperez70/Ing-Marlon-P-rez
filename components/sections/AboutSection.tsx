@@ -27,7 +27,7 @@ const highlights = [
 
 export function AboutSection() {
     return (
-        <section id="about" className="py-24 px-4">
+        <section id="about" className="py-20 md:py-24 px-4 sm:px-6">
             <div className="max-w-5xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -46,7 +46,7 @@ export function AboutSection() {
                     <div className="section-divider" />
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                     {/* Left — Profile card */}
                     <motion.div
                         initial={{ opacity: 0, x: -24 }}

@@ -61,7 +61,7 @@ const experiences = [
 
 export function ExperienceSection() {
     return (
-        <section id="experience" className="py-24 px-4">
+        <section id="experience" className="py-20 md:py-24 px-4 sm:px-6">
             <div className="max-w-5xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -88,8 +88,8 @@ export function ExperienceSection() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.12, duration: 0.6 }}
                         >
-                            <div className="glass-card rounded-2xl p-6 md:p-8">
-                                <div className="flex flex-col md:flex-row md:items-start gap-5">
+                            <div className="glass-card rounded-2xl p-5 sm:p-6 md:p-8">
+                                <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-5">
                                     {/* Icon */}
                                     <div
                                         className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
@@ -109,9 +109,9 @@ export function ExperienceSection() {
                                                     {exp.company}
                                                 </p>
                                             </div>
-                                            <div className="flex items-center gap-2 shrink-0">
+                                            <div className="flex flex-wrap items-center gap-2 shrink-0">
                                                 <span
-                                                    className="badge text-xs px-2.5 py-1"
+                                                    className="badge text-[10px] sm:text-xs px-2 py-1"
                                                     style={{
                                                         background: `${exp.color}14`,
                                                         color: exp.color,

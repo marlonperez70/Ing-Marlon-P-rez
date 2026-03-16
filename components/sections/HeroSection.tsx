@@ -33,31 +33,31 @@ export function HeroSection() {
             </div>
 
             {/* 2. CLEAN CONTENT (No boxes, no noise) */}
-            <div className="relative z-20 h-full max-w-7xl mx-auto px-8 md:px-20 flex flex-col justify-center">
+            <div className="relative z-20 h-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-center">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                     className="max-w-3xl"
                 >
-                    <h1 className="text-6xl md:text-9xl font-black italic tracking-tighter text-white uppercase leading-[0.8] mb-8">
+                    <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black italic tracking-tighter text-white uppercase leading-[0.85] mb-6 md:mb-8">
                         Ing. Marlon <br /> 
                         <span className="text-[#00E5FF] drop-shadow-[0_0_20px_rgba(0,229,255,0.3)]">Pérez</span>
                     </h1>
 
-                    <p className="text-white/50 text-sm md:text-lg font-sans tracking-[0.2em] leading-relaxed mb-12 max-w-lg uppercase">
+                    <p className="text-white/50 text-xs sm:text-sm md:text-lg font-sans tracking-[0.15em] md:tracking-[0.2em] leading-relaxed mb-8 md:mb-12 max-w-lg uppercase">
                         Cybersecurity Specialist <span className="mx-2 text-white/20">|</span> 
                         IT Auditor <span className="mx-2 text-white/20">|</span> 
                         AI Researcher
                     </p>
 
-                    <div className="flex flex-wrap gap-10">
+                    <div className="flex flex-wrap gap-6 md:gap-10">
                         <button 
                             onClick={scrollToAbout} 
                             className="group relative flex items-center gap-4 text-white transition-all"
                         >
                             <span className="text-[10px] uppercase tracking-[0.4em] font-black group-hover:text-[#00E5FF]">Explorar Portafolio</span>
-                            <div className="w-12 h-[1px] bg-white/20 group-hover:w-20 group-hover:bg-[#00E5FF] transition-all" />
+                            <div className="w-10 h-[1px] bg-white/20 group-hover:w-16 group-hover:bg-[#00E5FF] transition-all" />
                         </button>
                         
                         <Link href="/investigacion" className="group flex items-center gap-4 text-white/40 hover:text-white transition-all">

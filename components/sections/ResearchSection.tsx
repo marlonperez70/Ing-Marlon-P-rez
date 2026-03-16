@@ -65,7 +65,7 @@ export function ResearchSection() {
     const activeProject = projects.find(p => p.slug === playingVideo);
 
     return (
-        <section id="research" ref={sectionRef} className="py-24 px-4 relative overflow-hidden">
+        <section id="research" ref={sectionRef} className="py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--neon-violet)] opacity-[0.02] blur-[120px] -z-10" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[var(--neon-cyan)] opacity-[0.02] blur-[120px] -z-10" />
@@ -90,7 +90,7 @@ export function ResearchSection() {
                     </p>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                     {projects.map((project, index) => {
                         const statusInfo = statusConfig[project.status as keyof typeof statusConfig];
                         const isThisPlaying = playingVideo === project.slug;
@@ -163,7 +163,7 @@ export function ResearchSection() {
                                     </div>
 
                                     {/* Content Area */}
-                                    <div className="p-8 flex flex-col flex-1">
+                                    <div className="p-6 md:p-8 flex flex-col flex-1">
                                         <div className="flex items-center gap-3 mb-4">
                                             <div className="w-8 h-8 rounded-lg bg-[var(--neon-cyan)]/10 flex items-center justify-center">
                                                 <Video className="w-4 h-4 text-[var(--neon-cyan)]" />

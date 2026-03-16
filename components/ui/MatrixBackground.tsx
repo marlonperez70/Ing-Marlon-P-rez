@@ -12,11 +12,12 @@ export function MatrixBackground() {
         if (!ctx) return;
 
         let animationFrameId: number;
-        const fontSize = 18; // Fuente un poco más grande para mejor legibilidad
+        const fontSize = 18;
         let columns: number;
         let drops: number[] = [];
 
         const initMatrix = () => {
+            if (!canvas) return;
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             columns = Math.floor(canvas.width / fontSize);
@@ -27,11 +28,19 @@ export function MatrixBackground() {
             drops = newDrops;
         };
 
+        let resizeTimeout: NodeJS.Timeout;
+        const handleResize = () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(initMatrix, 200);
+        };
+
         initMatrix();
-        window.addEventListener("resize", initMatrix);
+        window.addEventListener("resize", handleResize, { passive: true });
 
         const draw = () => {
-            // Fondo con estela (trail) - Ajustado para que el rastro sea sutil pero el contraste alto
+            if (!ctx || !canvas) return;
+            
+            // Fondo con estela (trail)
             ctx.fillStyle = "rgba(2, 4, 8, 0.15)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -47,14 +56,13 @@ export function MatrixBackground() {
                 ctx.fillStyle = "#00F7FF";
                 ctx.fillText(text, x, y);
 
-                // Efecto de "Cabeza Brillante": El número más reciente es blanco para resaltar
-                // Esto es lo que realmente le da el "contraste" que el usuario busca
+                // Efecto de "Cabeza Brillante"
                 if (Math.random() > 0.85) {
                    ctx.fillStyle = "#FFFFFF";
                    ctx.fillText(text, x, y);
                 }
 
-                // Resetear la gota cuando sale de la pantalla o con una pequeña probabilidad aleatoria
+                // Resetear la gota
                 if (y > canvas.height && Math.random() > 0.975) {
                     drops[i] = 0;
                 }
@@ -68,10 +76,10 @@ export function MatrixBackground() {
 
         return () => {
             cancelAnimationFrame(animationFrameId);
-            window.removeEventListener("resize", initMatrix);
+            window.removeEventListener("resize", handleResize);
+            clearTimeout(resizeTimeout);
         };
     }, []);
 
-    // Opacidad subida a 0.7 para que los números sean MUY claros
     return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none opacity-70 z-0" />;
 }

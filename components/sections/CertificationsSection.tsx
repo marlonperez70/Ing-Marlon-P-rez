@@ -42,7 +42,7 @@ export function CertificationsSection() {
     }, []);
 
     return (
-        <section id="certifications" className="py-24 px-4 relative">
+        <section id="certifications" className="py-20 md:py-24 px-4 sm:px-6 relative">
             <div className="max-w-6xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -74,7 +74,7 @@ export function CertificationsSection() {
                         <p className="text-[var(--text-muted)] font-mono text-sm">Esperando sincronización de documentos...</p>
                     </div>
                 ) : (
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
                         {certifications.map((cert, index) => (
                             <motion.div
                                 key={cert.id}

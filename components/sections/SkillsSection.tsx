@@ -71,7 +71,7 @@ const toolBadges = [
 
 export function SkillsSection() {
     return (
-        <section id="skills" className="py-24 px-4">
+        <section id="skills" className="py-20 md:py-24 px-4 sm:px-6">
             <div className="max-w-5xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -90,7 +90,7 @@ export function SkillsSection() {
                 </motion.div>
 
                 {/* Skill Categories */}
-                <div className="grid md:grid-cols-2 gap-6 mb-10">
+                <div className="grid md:grid-cols-2 gap-5 md:gap-6 mb-10">
                     {skillCategories.map((category, catIndex) => (
                         <motion.div
                             key={category.title}
