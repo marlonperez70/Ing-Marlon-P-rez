@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Fira_Code } from "next/font/google";
+import { Inter, Fira_Code, Michroma } from "next/font/google";
+
+const michroma = Michroma({
+  variable: "--font-michroma",
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
 import "./globals.css";
 
 const inter = Inter({
@@ -43,7 +50,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${inter.variable} ${firaCode.variable} antialiased`}>
+      <body className={`${inter.variable} ${firaCode.variable} ${michroma.variable} antialiased`}>
         {children}
       </body>
     </html>
